@@ -1,0 +1,185 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Student Research Council | Create Account</title>
+    {% include 'core/generalheads.html' %}
+    {% tailwind_css %}
+</head>
+<body>
+    <nav class="p-6 flex justify-between items-center w-full font-poppins sticky top-0 z-30 bg-white">
+        <div>
+            <div class="flex items-center gap-2 md:gap-3 font-[Poppins] z-40">
+                <img src="{% static 'images/mcetlogo.png' %}" alt="logo" class="w-19 h-10 " />
+                <span class="w-[1px] h-[20px] bg-gray-300 rounded-md"></span>
+                <div class="flex items-center gap-3">
+                  <img src="{% static 'images/srclogo.png' %}" alt="logo" class="w-12" />
+                  <div class="flex flex-col justify-center">
+                    <p class="text-lg mb-1 text-gray-500 hidden md:block">Dr.Mahalingam College of Engineering & Technology</p>
+                    <p class="text-xl font-semibold mb-0 leading-none">Student Research Council</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="hidden md:flex gap-12 justify-center font-medium text-gray-600">
+          <a href="/" class="text-xl hover:underline transition-all">Home</a>
+          <a href="#" class="text-xl hover:underline transition-all">Events</a>
+          <a href="#" class="text-xl hover:underline transition-all">Hall Of Fame</a>
+          <a href="#" class="text-xl hover:underline transition-all">Contact</a>
+      </div>
+      <div class="block">
+        <a href="/signin" class="py-3 px-7 text-lg font-medium bg-[#1E88E5] hover:bg-[#28679f] transition-all rounded-3xl text-white">
+          Signin
+        </a>
+      </div>
+    </nav>
+    <!-- MAIN -->
+    <div class="parent flex justify-between gap-4 h-[100vh] lg:flex-nowrap flex-wrap font-poppins">
+        <div class="flex flex-col w-[100%] px-6 py-10 lg:px-8">
+            <div>
+                <!-- <div class="flex items-center gap-4">
+                    <img src="{% static 'images/srclogo.png' %}" alt="logo" class="w-24">
+                    <p class="text-4xl font-semibold">Student Research <br>Council</p>
+                </div> -->
+                <p class="text-3xl font-poppins font-semibold text-center md:text-left">Create your Innovator Account!</p>
+                <p class="errortext text-red-600 text-xl">{{error}}</p>
+            </div>
+          <div class=" sm:mx-auto w-full">
+            <form class="space-y-6 form" method="POST">
+              {% csrf_token %}
+              <div>
+                  <label for="business_name" class="block text-xl font-medium leading-6 text-gray-900">Full Name</label>
+                  <div class="mt-1">
+                    <input id="business_name" name="fullname" type="text" autocomplete="business_name" required class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                  </div>
+              </div>
+  
+              <div>
+                <label for="roll" class="block text-xl font-medium leading-6 text-gray-900">College Full Roll No (727623bad***)</label>
+                <div class="mt-1">
+                  <input id="roll" name="roll" type="text" required class="text-xl rollno lowercase block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                </div>
+              </div>
+            <div class="flex gap-y-6 gap-x-3 flex-wrap md:flex-nowrap">
+              <div class="w-full">
+                <label for="department" class="block text-xl font-medium leading-6 text-gray-900">Department</label>
+                <div class="mt-1">
+                  <select name="department" class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                    {% for department in departments %}
+                        <option value="{{department.id}}" class="text-xl">{{department}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+            </div>
+
+            <div class="w-full">
+                <label for="department" class="block text-xl font-medium leading-6 text-gray-900">Year of Study</label>
+                <div class="mt-1">
+                  <select name="yos" class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                    <option value="FIRST" class="text-xl">First Year</option>
+                    <option value="SECOND" class="text-xl">Second Year</option>
+                    <option value="THIRD" class="text-xl">Third Year</option>
+                    <option value="FINAL" class="text-xl">Final Year</option>
+                  </select>
+                </div>  
+            </div>
+          </div>
+          <div class="flex gap-y-6 gap-x-3 flex-wrap md:flex-nowrap items-start">
+            <div class="w-full">
+              <label for="pmail" class="text-xl font-medium leading-6 text-gray-900">
+                Personal Mail
+              </label>
+              <div class="mt-1">
+                <input id="pmail" name="personalmail" type="email" required class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                <p class="text-sm font-medium text-gray-500 flex gap-1">
+                  <img src="{% static 'images/information-circle-outline.svg' %}" alt="" class="opacity-65 w-5">
+                  Will be used for verification during password change request
+                </p>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <label for="contact" class="block text-xl font-medium leading-6 text-gray-900">Contact Number</label>
+              <div class="mt-1">
+                <input id="contact" name="contact" type="tel" required class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+              </div>
+            </div>
+          </div>
+
+              <div>
+                  <label for="password" class="block text-xl font-medium leading-6 text-gray-900">
+                    <p>Password</p>
+                  </label>
+                  <div class="mt-1">
+                    <input id="email" name="password1" type="password" required class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                  </div>
+              </div>
+  
+              <div>
+                  <label for="password2" class="block text-xl font-medium leading-6 text-gray-900">Re-Enter Password</label>
+                  <div class="mt-1">
+                    <input id="password2" name="password2" type="password" required class="text-xl block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                  </div>
+              </div>
+        
+              <!-- <div>
+                <div class="flex items-center justify-between">
+                  <label for="password" class="block text-xl font-medium leading-6 text-gray-900">Password</label>
+                  <div class="text-xl">
+                    <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-xl sm:leading-6">
+                </div>
+              </div> -->
+        
+              <div>
+                <button type="submit" class="flex w-full justify-center rounded-md bg-[#1E88E5] px-3 py-3 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-[#378fdc] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create Account</button>
+              </div>
+            </form>
+        
+            <p class="mt-2 text-center text-xl text-gray-500">
+              Already have an account?
+              <a href="/signin" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Signin</a>
+            </p>
+          </div>
+        </div>
+        <!-- Side banner -->
+        <div class="side flex min-h-full w-[100%]">
+          <img src="{% static 'images/banner4.jpg' %}" class="min-w-[100%] min-h-[100%]" alt="banner">
+        </div>
+      </div>
+      <script>
+        const regex = /7276[1-9]{2}[A-Za-z]+[0-9]{3}/
+        const errtxt = document.querySelector('.errortext')
+        const form  = document.querySelector('.form')
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault()
+            const roll = document.querySelector('.rollno').value.toLocaleLowerCase()
+            if (!regex.test(roll))
+            {
+                errtxt.innerText = "Invalid Roll No: Please Check your Roll No and enter full roll no (eg: 727623BAD***)"
+                window.scrollTo(0,0)
+            }
+            else if (document.getElementsByName('password1')[0].value.length < 8)
+            {
+                errtxt.innerText = "Weak Password: Please enter a password of minimum length 8 characters in an alphanumeric combination"
+            }
+            else if(document.getElementsByName('password1')[0].value != document.getElementsByName('password2')[0].value)
+            {
+                errtxt.innerText = "Password Mismatch: Please Enter the same password in both the fields"
+            }
+            else
+            {
+                form.submit()
+            }
+
+        })
+      </script>
+</body>
+</html>

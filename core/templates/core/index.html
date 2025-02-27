@@ -1,0 +1,220 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Student Research Council | MCET</title>
+    {% include 'core/generalheads.html' %}
+    {% tailwind_css %}
+</head>
+<body>
+     <section class="w-full px-12 flex flex-col max-w-[1440px] ml-auto mr-auto font-poppins">
+        {% include 'core/nav.html' %}
+        <!-- Hero Section -->
+        <div class="w-full relative overlay overflow-hidden h-[70vh] rounded-3xl flex justify-center items-center p-6 font-poppins text-white">
+            <img src="{% static 'images/m1.png' %}" alt="img" class="min-w-full min-h-full absolute left-0 top-0">
+            <div class="z-20 relative w-full text-center">
+                <p class="font-light tracking-[10px] text-xl md:text-2xl uppercase text-gray-200">Student Research Council</p>
+                <p class="text-[32px]/snug md:text-6xl/normal font-semibold">
+                    Empowering Students Through Education and Innovation
+                </p>
+                <p class="text-xl md:text-2xl text-gray-200">Join us in our mission to upskill students and create a brighter future for all.</p>
+                <div class="mt-12 flex justify-center">
+                    <a href="#facilities" class="group pl-12 pr-2 py-2 rounded-full bg-white hover:bg-gray-100 transition text-black text-2xl font-medium uppercase flex justify-evenly items-center gap-12">
+                        Explore Facilities
+                        <div class="p-4 bg-black rounded-full min-h-full w-[40px] h-[40px] hover">
+                            <img src="{% static 'images/arrow.svg' %}" class="w-full h-full -rotate-45 group-hover:rotate-0 transition">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Spotlight Section -->
+         <div class="relative py-6 overflow-hidden">
+            <img src="{% static 'images/spotimg.svg' %}" class="absolute -z-10 min-w-[100%]">
+         <div class="mt-12 w-full text-center flex justify-center items-center relative">
+            <!-- <div class="w-full absolute left-0 top-0 flex justify-center -z-20"> -->
+            <!-- </div> -->
+            <p class="uppercase text-5xl tracking-[15px] font-medium">Spotlight</p>
+         </div>
+         <div class="w-full mt-14 flex justify-between items-center gap-12 flex-wrap md:flex-nowrap">
+            <div class="w-full  md:max-w-[50%]">
+                <img src="{% static 'images/sp1.png' %}" alt="">
+            </div>
+            <div class="w-full md:max-w-[50%]">
+                <p class=" text-gray-600 text-xl tracking-[15px]">UPCOMING EVENT</p>
+                <p class="font-semibold text-4xl mt-12">TechnoFete'25</p>
+                <p class="mt-6 text-xl text-gray-500">
+                    Join us for an exciting Intra-College Technical Symposium, designed to ignite young minds with technical knowledge while providing a dynamic platform for students to showcase and challenge their expertise across various domains. Engage in hands-on sessions, thought-provoking competitions, and collaborative learning experiences that push the boundaries of innovation and skill.
+                </p>
+                <button class="group pl-12 pr-2 py-2 rounded-full bg-white border-2 w-full md:w-auto hover:bg-gray-100 transition text-black text-2xl font-medium uppercase flex justify-center md:justify-evenly items-center gap-12 mt-12">
+                    Register
+                    <div class="p-4 bg-black rounded-full min-h-full w-[40px] h-[40px] hover">
+                        <img src="{% static 'images/arrow.svg' %}" class="w-full h-full -rotate-45 group-hover:rotate-0 transition">
+                    </div>
+                </button>
+            </div>
+         </div>
+        </div>
+        <div class="h-[1px] mt-14 w-full bg-gray-200"></div>
+        <!-- Bento Section -->
+         <div class="w-full mt-14    flex items-center flex-col" id="about">
+            <div class="text-center">
+                <p class="text-6xl font-medium">Unveiling our<br> Mission and Vision</p>
+            </div>
+            <div class="grid grid-cols-12 grid-rows-2 gap-6 mt-12">
+                <div class="col-span-12 md:col-span-8 h-[250px] overflow-hidden rounded-3xl">
+                    <img src="{% static 'images/sp1.png' %}" class="min-w-[100%] min-h-[100%]">
+                </div>
+                <div class="bg-[#87FF93] p-12 rounded-3xl gap-12 flex flex-col justify-evenly col-span-12 md:col-span-4 row-span-2">
+                    <div>
+                        <p class="text-7xl font-medium">3000+</p>
+                        <p class="text-2xl">Students Engaged</p>
+                    </div>
+                    <div class="w-full h-[1px] rounded-full bg-gray-900 opacity-40"></div>
+                    <div>
+                        <p class="text-7xl font-medium">500+</p>
+                        <p class="text-2xl">Students Awarded</p>
+                    </div>
+                </div>
+                <div class="bg-[#77C6FF] rounded-3xl h-full col-span-6 md:col-span-3 flex justify-center p-12 md:p-20 text-left flex-col">
+                    <p class="text-7xl font-medium">15+</p>
+                    <p class="text-2xl font-medium">Technical Events</p>
+                </div>
+                <div class="bg-[#FF5894] rounded-3xl h-full col-span-6 md:col-span-3  flex justify-center p-12 md:p-20 text-left flex-col">
+                    <p class="text-7xl font-medium">100%</p>
+                    <p class="text-2xl">Success Rate</p>
+                </div>
+                <div class="bg-[#d8ff58] rounded-3xl h-full col-span-full md:col-span-2  flex justify-center p-12 md:p-20 text-left flex-col">
+                    <p class="text-7xl font-medium">100%</p>
+                    <p class="text-2xl">Success Rate</p>
+                </div>
+            </div>
+         </div>
+        <!-- About Section -->
+        <div class="flex flex-col mt-12 gap-12">
+            <div class="flex justify-between items-start flex-wrap gap-y-6">
+                <div>
+                    <p class="uppercase  text-gray-500 text-xl">our vision</p>
+                    <p class="text-3xl font-medium">Empower Students to Innovate </p>
+                </div>
+                <div class="md:max-w-[50%]">
+                    <p class="text-xl text-gray-600">
+                        To build a strong research community that inspires creativity, teamwork, and innovation by providing students with the necessary resources, mentorship, and opportunities. We empower students to develop groundbreaking ideas, collaborate across disciplines, and transform their research into impactful real-world solutions. <br> <br>We envision a dynamic research community where students are empowered to push the boundaries of knowledge, creativity, and innovation. By fostering a culture of collaboration, mentorship, and resource-sharing, we aim to equip aspiring researchers with the tools and opportunities needed to develop groundbreaking ideas. Our commitment is to transform academic curiosity into real-world impact, bridging disciplines and inspiring the next generation of innovators to drive meaningful change.
+                    </p>
+                </div>
+            </div>
+            <div class="flex justify-between items-start flex-wrap gap-y-6">
+                <div>
+                    <p class="uppercase  text-gray-500 text-xl">our mission</p>
+                    <p class="text-3xl font-medium">Inspiring Ideas, Creating Impact</p>
+                </div>
+    
+                <div class="md:max-w-[50%]">
+                    <p class="text-xl text-gray-600">
+                        The Student Research Council (SRC) supports and empowers students in their research journey by providing funding, mentorship, and opportunities to showcase their innovative ideas. We create a collaborative ecosystem where students can develop solutions for real-time problems, gain industry exposure, and protect their inventions.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Facillities Section -->
+        <div class="flex justify-center items-center w-full mt-20 fac" id="facilities">
+            <p class="text-6xl font-medium">Facilities</p>
+        </div>
+         <div class="grid grid-cols-2 gap-6 justify-center mt-12">
+            <div class="p-12 bg-[#F7E6D4] col-span-full  md:col-span-1 rounded-xl relative overflow-hidden">
+                <div class="w-full h-full relative z-20">
+                <p class="uppercase text-base font-medium text-gray-700">funding</p>
+                <p class="font-medium text-3xl mt-4">Seed Funding</p>
+                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
+                    Get in touch
+                    <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
+                </a>
+                </div>
+                <img src="{% static 'images/fo.svg' %}" alt="icon" class="absolute top-0 -right-[20%]">
+            </div>
+
+            <div class="p-12 bg-[#F0EFEA] col-span-full md:col-span-1 rounded-xl relative overflow-hidden">
+                <div class="w-full h-full z-20 relative">
+                <p class="uppercase text-base font-medium text-gray-700">guidance</p>
+                <p class="font-medium text-3xl mt-4">Project Guidance</p>   
+                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
+                    Get in touch
+                    <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
+                </a>
+                </div>
+                <img src="{% static 'images/fg.svg' %}" alt="icon" class="absolute top-0 -right-[20%]">
+            </div>
+
+            <div class="p-12 bg-[#E2EEDA] col-span-full  md:col-span-1 rounded-xl relative overflow-hidden">
+                <div class="w-full h-full z-20 relative">
+                <p class="uppercase text-base font-medium text-gray-700">funding</p>
+                <p class="font-medium text-3xl mt-4">Paper Publication</p>
+                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
+                    Get in touch
+                    <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
+                </a>
+                </div>
+                <img src="{% static 'images/fgg.svg' %}" alt="icon" class="absolute top-0 -right-[20%]">
+            </div>
+
+            <div class="p-12 bg-[#E6E0EA] col-span-full  md:col-span-1  md:col- rounded-xl relative overflow-hidden">
+                <div class="w-full h-full z-20 relative">
+                <p class="uppercase text-base font-medium text-gray-700">funding</p>
+                <p class="font-medium text-3xl mt-4">IPR Assistance</p>
+                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
+                    Get in touch
+                    <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
+                </a>
+                </div>
+                <img src="{% static 'images/fp.svg' %}" alt="icon" class="absolute top-0 -right-[20%]">
+            </div>
+         </div>
+         <!-- Footer Section -->
+         <div class="min-h-[50vh] bg-gray-100 rounded-xl mt-12 flex justify-center items-start p-6">
+            <div>
+                <div class="flex justify-center items-center gap-2 md:gap-3 font-[Poppins] z-40 ">
+                    <div class="flex items-center flex-col gap-3">
+                      <img src="{% static 'images/srclogo.png' %}" alt="logo" class="w-48" />
+                      <div class="flex flex-col justify-center items-center">
+                        <p class="text-2xl font-semibold mb-0 leading-none">Student Research Council</p>
+                        <p class="text-xl mt-2 tracking-widest">To Research, To Innovate</p>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 flex-wrap lg:flex-nowrap justify-center mt-12">
+                    <a href="mail:srcofficials@drmcet.ac.in" class="flex items-center gap-2">
+                        <img src="{% static 'images/mail.svg' %}" class="w-6">
+                        srcofficials@drmcet.ac.in
+                    </a>
+                    <a href="https://www.linkedin.com/in/student-research-council-drmcet-3a4b42323/" class="flex items-center gap-2" target="_blank">
+                        <img src="{% static 'images/linkedin.svg' %}" class="w-6">
+                        Student Research Council
+                    </a>
+                    <a href="https://www.instagram.com/src.offl?igsh=ZThwa3VrbHlxbWFl" class="flex items-center gap-2" target="_blank">
+                        <img src="{% static 'images/instagram.svg' %}" class="w-6">
+                        src.offl
+                    </a>
+                    <a href="https://maps.app.goo.gl/71kBdADuf24sPRx98" target="_blank" class="flex items-center gap-2">
+                        <img src="{% static 'images/office.svg' %}" class="w-6">
+                        116 A-Block, MCET
+                    </a>
+                </div   >
+
+            </div>
+            <div></div>
+         </div>
+     </section>
+     
+
+    {% include 'core/generalscripts.html' %}
+</body>
+</html>

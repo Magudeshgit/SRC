@@ -1,0 +1,242 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoFete'25</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+    {% tailwind_css %}
+</head>
+<body class="font-poppins relative max-w-[100vw] overflow-x-hidden bg-[#F4F4F4]">
+   {% include 'core/nav.html' %}
+    <div class="text-center relative overflow-hidden h-screen w-full bg-green flex justify-center items-center">
+        <div class="grid grid-cols-6 grid-rows-3 h-full min-w-full gap-y-8 gap-x-8 absolute top-0 left-0">
+            <div class="col-start-1"><img src="{% static 'images/hh1.svg' %}" class="w-full h-full"></div>
+            <div class="col-start-1 row-start-3"><img src="{% static 'images/hh2.svg' %}" class="w-full h-full"></div>
+            <div class="col-start-6"><img src="{% static 'images/hh3.svg' %}" class="w-full h-full"></div>
+            <div class="col-start-6 row-start-3 rounded-lg"><img src="{% static 'images/hh4.svg' %}" class="w-full h-full"></div>
+            <!-- <div><img src="{% static 'images/hh5.svg' %}" class="w-full h-full"></div> -->
+            <div class="row-start-2 col-start-1"><img src="{% static 'images/hh6.jpg' %}" class="w-full h-full"></div>
+            <div class="row-start-1 col-start-2 rounded-lg"><img src="{% static 'images/hh13.jpg' %}" class="w-full h-full"></div>
+            <div class="col-start-5 row-start-1 rounded-lg"><img src="{% static 'images/hh8.jpg' %}" class="w-full h-full"></div>
+            <div class="row-start-3"><img src="{% static 'images/hh9.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="row-start-3"><img src="{% static 'images/hh10.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="row-start-3"><img src="{% static 'images/hh7.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="row-start-2 col-start-6"><img src="{% static 'images/hh11.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="row-start-1 col-start-3 rounded-lg"><img src="{% static 'images/hh12.jpg' %}" class="min-w-full min-h-full"></div>
+        </div>
+        <div class="w-[800px] h-[400px] drop-shadow-white shadow-[25px_25px_50px_20px_rgba(255,255,255,0.55)] bg-white bg-opacity-75 backdrop-blur-md rounded-2xl border-2 border-gray-200 p-12 flex items-center flex-col ">
+            <p class="text-2xl">SRC in Colloboration with Department Associations</p>
+            <p class="text-xl font-light mt-4">Present's</p> 
+            <img src="{% static 'images/tflogo.svg' %}" alt="">
+            <p class="text-xl md:max-w-[75%] mt-4 font-light text-gray-500">An intra-college technical symposium to enhance and equip young minds with technical knowledge through carefully curated events.</p>
+            <p class="mt-3 text-xl">13th & 14th of March, 2025</p>
+            <button type="button" class=" flex gap-2 items-center justify-center text-black bg-[#F2B229] hover:bg-[#cf9d2f] font-normal rounded-md text-2xl transition px-12 py-2.5 me-2 mb-2 mt-6 w-[75%]">
+                Explore Events
+            </button>
+        </div>
+    </div>
+
+    <div class="p-6 lg:px-12 mt-6" id="Events">
+        <p class="font-bold text-5xl text-left">About</p>
+        <p></p>
+    </div>
+
+<div class="p-6 lg:px-12" id="Events">
+ <!-- Highlighted Events -->
+      <!-- Founder's Fest -->
+      <div class="relative flex justify-center items-center flex-col">
+        <!-- Absolutes -->
+        <!-- <img src="{% static 'images/dots.svg' %}" class="absolute left-[-50px] top-[225px] max-w-[50%]"> -->
+        <img src="{% static 'images/redblob.svg' %}" class="absolute right-[-100px] block top-[200px] lg:top-[150px]">
+        <img src="{% static 'images/blueblob.svg' %}" class="absolute left-[-100px] bottom-[-200px]">
+
+        <!-- Components -->
+        <div class="font-montserrat mt-24 w-full flex flex-col items-center justify-center"> 
+                <div class="text-left min-w-full">
+                    <p class="font-extralight tracking-widest text-sm text-left">FEATURED EVENT</p>
+                    <p class="font-bold text-5xl text-left">Founder's Fest</p>
+                    <p class="font-light text-xl tracking-widest text-left">Unleash your Enterpreneurial Spirit</p>
+                </div>
+                
+                <!-- Cards -->
+                <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 w-full lg:max-w-[1000px] mt-12">
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                        Registration Closes Soon
+                    </span>
+                    <p class="font-medium text-2xl mt-2">About the Event</p>
+                    <p class=" text-gray-900 mt-4">Founder’s Fest is a one-day long entrepreneurial event focusing on young entrepreneurs to present their next business idea to a panel of judges who can then provide you with valuable insights in refining them to better comprehend with real-world competencies establishing a market viable business
+                    </p>
+                    <p class="mt-6 text-gray-800 font-medium">Date and Time: Aug, 19, 2024, Fullday</p>
+                    <p class="text-gray-800 font-medium">Venue: Mechanical Seminar Hall</p>
+                    <a href="/founder'sfest" class="w-full">
+                        <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-white bg-[#4f46e5] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                            Enroll now
+                        </button>
+                    </a>
+                </div>
+        </div>
+    </div>
+
+    <!-- Challenge Showcase -->
+    <div class="relative flex justify-center items-center flex-col">
+        <!-- Absolutes -->
+        <!-- <img src="{% static 'images/dots.svg' %}" class="absolute left-[-50px] top-[225px] max-w-[50%]"> -->
+        <img src="{% static 'images/square.svg' %}" class="absolute right-[-20px] block top-[325px]">
+        <img src="{% static 'images/triangle.svg' %}" class="absolute left-[-10px] bottom-[-20px]">
+
+        <!-- Components -->
+        <div class="font-montserrat mt-32 w-full flex flex-col items-center justify-center"> 
+                <div class="text-left min-w-full">
+                    <p class="font-light tracking-widest text-sm text-left">FEATURED EVENT</p>
+                    <p class="font-bold text-5xl text-left mt-2">Challenge Showcase</p>
+                    <p class="font-light text-xl tracking-widest text-left">Channel your problem-solving prowess</p>
+                </div>
+                
+                <!-- Cards -->
+                <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 w-full lg:max-w-[1000px] mt-12">
+                    <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300">
+                        Registration Closes Soon
+                    </span>
+                    <p class="font-medium text-2xl mt-2">About the Event</p>
+                    <p class="text-gray-900 mt-4">
+                        Challenge showcase is high-level problem solving event where participants will be presented with real world product, in which they will have to find a inherent problem within the allotted time and present a engineering-based solution for the same, which the jury will consider.
+                    </p>
+                    <p class="mt-6 text-gray-800 font-medium">Date and Time: Aug, 20, 2024, 09:00am to 02:00pm</p>
+                    <p class="text-gray-800 font-medium">Venue: Mechanical Seminar Hall</p>
+                    <a href="/challengeshowcase">
+                        <button type="button" class="w-full flex gap-2 items-center justify-center text-white bg-[#4f46e5] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                            Enroll now
+                        </button>
+                    </a>
+                </div>
+        </div>
+    </div>
+
+
+<!-- Events -->
+
+    <div class="mt-32">
+        <p class="font-montserrat font-bold text-4xl text-center lg:text-left">COMMON EVENTS</p>
+    </div>
+    <!-- Event Cards -->
+    <div>
+        {% for event in data %}
+        <div class="relative flex justify-between items-center w-full rounded-md bg-[#440235] mt-6 overflow-hidden flex-wrap-reverse lg:flex-nowrap shadow-2xl">
+            <div class="lg:max-w-[50%] ml-6 my-6">
+                <p class="font-bold font-poppins text-3xl text-white">{{event.name}}</p>
+                <p class="font-extralight font-poppins text-base text-white">{{event.shortdescription}}</p>
+                <p class="font-regular font-poppins text-base text-white mt-4">Date: {{event.date}}</p>
+                <p class="font-regular font-poppins text-base text-white">Time: {{event.timing}}</p>
+                <p class="font-regular font-poppins text-base text-white">Venue: {{event.venue}}</p>
+                <p class="font-regular font-poppins text-base text-white">Total slots: {{event.limit}}</p>
+                
+                <a href='/{{ event.name|lower|cut:" " }}' class="mt-4">
+                    <button type="button" class="mt-4 flex gap-2 items-center justify-between text-white bg-[#4f46e5] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-6 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                        Register now
+                    </button>   
+                </a>
+            </div>
+            <div class="md:min-w-[100%] lg:min-w-[50%]  min-h-[100%] image-inset">
+                <img src="{% static event.imagepath %}" alt="..." class="min-w-[100%] min-h-[100%]">
+            </div>
+            
+            <!-- Registration closed -->
+             {% if event.closed %}
+            <div class="absolute top-0 left-0 backdrop-blur-md bg-white bg-opacity-15 flex flex-col justify-center items-center border-2 border-gray-100 rounded-md p-6 lg:p-12 w-full h-full">
+                <!-- <img src="{% static 'images/failed.svg' %}" alt=""> -->
+                <p class="text-2xl font-semibold text-white mt-4">Registration Closed</p>
+                <p class="text-sm font-medium text-white mt-2 text-center">We're sorry, but the registration for "{{event.name}}" is closed, kindly check out our other events.</p>
+            </div>
+            {%endif%}
+        </div>
+        {% endfor %}
+    </div>
+
+    
+
+
+    
+
+</div>
+
+<!-- Branding -->
+ <div class="p-6 lg:px-12 font-montserrat relative ">
+    <div class="lg:max-w-[50%]">
+        <div class="mt-24">
+            <img src="{% static 'images/nxtech.svg' %}" class="lg:w-[300px]">
+        </div>
+        <div class="">
+            <p class="font-bold text-5xl mt-4">Participate to Win Exciting Prizes</p>
+            <p class="text-gray-600 mt-4">
+                Explore the depths of technology with NXTech’24! This premier event offers you the chance to collaborate with like-minded peers, upskill your talent through hands-on workshops and sessions, and compete in exciting challenges. With opportunities to win exciting prizes and gain invaluable knowledge, NXTech’24 is more than just a symposium—it's a platform for innovation, networking, and growth. Join us and be a part of the future of technology!
+            </p>   
+            <a href="#Events">
+                <button type="button" class=" flex gap-2 items-center justify-center text-white bg-[#4f46e5] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                    Explore Events
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="">
+        <img src="{% static 'images/globe.svg' %}" class="absolute top-[100px] right-[0px] w-[100px] lg:w-auto">
+    </div>
+
+ </div>
+
+<!-- Footer -->
+<div class="bg-white p-6 lg:p-12 flex flex-col justify-center items-center">
+    <div class="flex items-center justify-center flex-col">
+        <p class="font-light">Organizing commitee</p>
+        <img src="{% static 'images/srclogo.png' %}" class="w-[200px] h-[200px] mt-6">
+        <p class="font-semibold text-xl">Student Research Council</p>
+        <p class="font-light tracking-widest">To Research, To Innovate</p>
+    </div>
+    <div class="flex gap-4 mt-6 flex-wrap lg:flex-nowrap justify-center">
+        <a href="mail:srcofficials@drmcet.ac.in" class="flex">
+            <img src="{% static 'images/mail.svg' %}" class="w-[20px]">
+            srcofficials@drmcet.ac.in
+        </a>
+        <a href="https://www.instagram.com/src.offl?igsh=ZThwa3VrbHlxbWFl" class="flex" target="_blank">
+            <img src="{% static 'images/instagram.svg' %}" class="w-[20px]">
+            src.offl
+        </a>
+        <a href="" class="flex">
+            <img src="{% static 'images/office.svg' %}" class="w-[20px]">
+            116 A-Block, MCET
+        </a>
+    </div>
+</div>
+
+<!-- Rights -->
+<div class="absolute bottom-0 min-w-full bg-[#f4f4f4] flex justify-center items-center">
+    <p class="font-light text-sm text-gray-800">© Copyrights all rights reserved</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+{% include 'core/generalscripts.html' %}
+</body>
+</html>
+
+<!-- <div class="z-20 flex flex-col justify-center items-center">
+    <div class="flex items-center gap-2">
+        <img src="{% static 'images/srclogo.png' %}" alt="logo" class="w-32">
+    </div>
+    <p class="font-medium text-xl text-white font-montserrat">Student Research Council in collaboration with Department Associations</p>
+    <p class="font-extralight text-xl text-white opacity-75 mt-4">present's</p>
+    <p class="font-bold text-6xl text-white mt-6">TechnoFete'25</p>
+    <p class="font-bold text-6xl text-white mt-6">N<span class="text-pink-700">X</span>Tech'24</p>
+    <p class="font-light text-lg text-white font-montserrat mt-2 tracking-widest">March 14 - 15 | Technical Symposium</p>
+    <p class="font-medium text-2xl text-white mt-6 font-poppins">Join us for a tech festival at our MCET</p>
+    <a href="#Events" class="mt-6">
+        <button type="button" class=" flex gap-2 items-center justify-between text-white bg-[#4f46e5] hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            Explore Events
+        </button>
+    </a>
+    </div> -->

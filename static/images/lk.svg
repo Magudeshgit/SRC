@@ -1,0 +1,25 @@
+<svg width="387" height="281" viewBox="0 0 387 281" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="193.5" cy="140.5" rx="193.5" ry="140.5" fill="url(#paint0_radial_524_230)"/>
+<defs>
+<radialGradient id="paint0_radial_524_230" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(193.5 140.5) rotate(90) scale(140.5 193.5)">
+<stop offset="0.331667" stop-color="#FFC949"/>
+<stop offset="0.405926" stop-color="#FFC949"/>
+<stop offset="0.405926" stop-color="#FFD060"/>
+<stop offset="0.480185" stop-color="#FFD060"/>
+<stop offset="0.480185" stop-color="#FFD777"/>
+<stop offset="0.554444" stop-color="#FFD777"/>
+<stop offset="0.554444" stop-color="#FFDD8D"/>
+<stop offset="0.628704" stop-color="#FFDD8D"/>
+<stop offset="0.628704" stop-color="#FFE4A4"/>
+<stop offset="0.702963" stop-color="#FFE4A4"/>
+<stop offset="0.702963" stop-color="#FFEBBB"/>
+<stop offset="0.777222" stop-color="#FFEBBB"/>
+<stop offset="0.777222" stop-color="#FFF2D2"/>
+<stop offset="0.851481" stop-color="#FFF2D2"/>
+<stop offset="0.851481" stop-color="#FFF8E8"/>
+<stop offset="0.925741" stop-color="#FFF8E8"/>
+<stop offset="0.925741" stop-color="white"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+</defs>
+</svg>
