@@ -1,0 +1,69 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Student Research Council | Registered Events</title>
+    {% include 'core/generalheads.html' %}
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    {% tailwind_css %}
+</head>
+<body>
+    {% include 'core/nav.html' %}
+    <div class="w-full p-6 text-center font-poppins ptext-wrap">
+        <p class="prompt_text text-xl font-medium"></p>
+    </div>
+    <div class="p-6 font-poppins w-full flex justify-center flex-col items-center">
+        <div id="reader" class="max-w-[500px] w-full mt-6 rounded-2xl"></div>
+    </div>
+    {% include 'core/generalscripts.html' %}
+    <script>
+        const prompt_text = document.querySelector('.prompt_text')
+        window.onload = ()=>{
+            // document.getElementById('reader').children[0].remove()
+        }
+        const scanner = new Html5QrcodeScanner('reader', {
+            qrbox: {
+                width: '250',
+                height: '250' 
+            },
+            fps: 30
+        });
+        scanner.render(success, error)
+
+        function success(url) {
+            scanner.pause(true)
+            const lk = fetch("http://"+url+'/', 
+                {
+                    method: "GET",
+                })
+            .then(e=>e.json().then(f=>{
+                console.log(f)
+                if (f.status)
+                {
+                    document.querySelector('.ptext-wrap').style.background = '#dcfce7'
+                    prompt_text.innerText = `${f.event}: ${f.teamname} - ${f.participant}, ${f.roll}`
+                }
+                else
+                {
+                    document.querySelector('.ptext-wrap').style.background = '#fde2e2'
+                    prompt_text.innerText = f.message
+                }
+                setTimeout(function vid_red(){
+                    document.querySelector('.ptext-wrap').style.background = 'transparent'
+                    prompt_text.innerText = ''
+                    scanner.resume()
+                }, 500)
+            }))
+            console.log(url)
+        }
+        function error(ds)
+        {
+            null
+        }
+    </script>
+</body>
+</html>

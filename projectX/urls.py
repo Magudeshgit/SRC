@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import PasswordResetConfirmView, PasswordResetCompleteView
-
+from django.conf import settings
+from django.conf.urls.static import static
 from authentication.views import *
 from core.views import *
 
@@ -30,9 +31,15 @@ urlpatterns = [
     path('password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name="authentication/password_reset_confirm.html"), name="password_reset_confirm"),
     path('password-reset-mail-sent/', passwordResetMailSent, name='passwordresetmailsent'),
     path('password-reset-complete/', PasswordResetCompleteView.as_view(template_name="authentication/password_reset_complete.html"), name="password_reset_complete"),
+    path('registeredevents/', registered_events),
+    path('attendancehandler/<int:submission_id>/', attendance_handler),
+    path('attendancescanner/', attendance_scanner),
+    
     
     path('events/', events),
-    path('events/<str:macroevent>/', macroeventhandler),
+    path('events/<str:macroevent>/', macroeventhandler, name='macroevent'),
+    path('events/<str:macroevent>/explore/', exploremicroeventhandler, name="macroeventexplorer"),
+    path('events/<str:macroevent>/<str:microevent>/', microeventhandler, name="microeventdetails"),
     
     path('logout/', user_logout)
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -21,7 +21,7 @@
       <a href="/#about" class="text-xl hover:underline transition-all">About</a>
       <a href="/#facilities" class="text-xl hover:underline transition-all">Facilities</a>
       <a href="/events" class="text-xl hover:underline transition-all">Events</a>
-      <a href="/halloffame" class="text-xl hover:underline transition-all">Hall Of Fame</a>
+      <!-- <a href="/halloffame" class="text-xl hover:underline transition-all">Hall Of Fame</a> -->
       {% if user.is_authenticated %}
         <a href="#" class="text-xl hover:underline transition-all">Profile</a>
         {% endif %}
@@ -61,11 +61,11 @@
 
 
     <div class="transition duration-700 w-full h-[50vh] bg-[#f4f4f4] py-6  flex-col items-center justify-evenly absolute top-[-500px] hidden left-0 mobileview z-[100]">
-        <a href="#" class="text-xl hover:underline transition-all">Home</a>
-        <a href="#" class="text-xl hover:underline transition-all">About</a>
-        <a href="#facilities" class="text-xl hover:underline transition-all">Facilities</a>
-        <a href="#" class="text-xl hover:underline transition-all">Events</a>
-        <a href="#" class="text-xl hover:underline transition-all">Hall Of Fame</a>
+        <a href="/" class="text-xl hover:underline transition-all">Home</a>
+        <a href="/#about" class="text-xl hover:underline transition-all">About</a>
+        <a href="/events" class="text-xl hover:underline transition-all">Events</a>
+        <a href="/#facilities" class="text-xl hover:underline transition-all">Facilities</a>
+        <!-- <a href="/halloffame" class="text-xl hover:underline transition-all">Hall Of Fame -->
         {% if user.is_authenticated %}
         <a href="#" class="text-xl hover:underline transition-all">Profile</a>
         {% endif %}

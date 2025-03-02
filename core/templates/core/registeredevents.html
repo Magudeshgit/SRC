@@ -1,0 +1,47 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <title>Student Research Council | Registered Events</title>
+    {% include 'core/generalheads.html' %}
+    <script src="https://unpkg.com/@bitjson/qr-code@1.0.2/dist/qr-code.js"></script>
+    {% tailwind_css %}
+</head>
+<body>
+    {% include 'core/nav.html' %}
+    {% if events %}
+    <div class="w-full p-6 text-center bg-gray-100 font-poppins flex items-center justify-center font-medium text-lg gap-2">
+        <img src="{% static 'images/information-circle-outline.svg' %}" class="w-6 h-6">
+        Please ensure event coordinators scan the QR codes during the event.
+    </div>
+    {% endif %}
+    <div class="p-6 font-poppins w-full">
+    <p class="text-4xl font-bold text-center">Your Registered Events</p>
+    <div class="flex gap-4 flex-wrap justify-center mt-12">
+        {% for event in events %}
+        <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 max-w-[350px] flex flex-col justify-between">
+            <div class="flex justify-center flex-wrap gap-y-4">
+                <qr-code 
+                    style="width: 250px; height: 250px;"
+                    contents="{{ request.META.HTTP_HOST }}/attendancehandler/{{ event.submission.id }}">
+                    <img src="{% static 'images/srclogo.png' %}" alt="" slot="icon">
+                </qr-code>
+                <p class="text-3xl font-semibold">{{event.event.eventname}} - {{event.teamname}}</p>
+                <p class=" text-gray-900 mt-4">Founder’s Fest is a one-day long entrepreneurial event focusing on young entrepreneurs to present their next business idea to a panel of judges who can then provide you with valuable insights in refining them to better comprehend with real-world competencies establishing a market viable business</p>
+            </div>
+            <div>
+                <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.event.startdate|date:"F d, Y. g:iA"}} - {{event.event.enddate|date:"g:iA"}}</p>
+                <p class="text-gray-800 font-semibold text-xl mt-4">Venue: {{event.event.event_venue}}</p>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    {% include 'core/generalscripts.html' %}
+</body>
+</html>

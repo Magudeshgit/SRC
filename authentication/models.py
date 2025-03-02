@@ -1,8 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+class stream(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name
+
 class department(models.Model):
+    stream_of = models.ForeignKey(stream, on_delete=models.SET_NULL, null=True)
     dept_name = models.CharField(max_length=50)
+    association_name = models.CharField(max_length=100)
     coordinatorname = models.CharField(max_length=150)
     contact = models.CharField(max_length=22)
     

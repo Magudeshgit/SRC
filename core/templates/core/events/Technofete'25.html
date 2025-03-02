@@ -1,0 +1,129 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoFete'25</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    {% tailwind_css %}
+</head>
+<body class="font-poppins relative bg-[#F4F4F4] max-w-screen">
+   {% include 'core/nav.html' %}
+    <div class="text-center relative h-[80vh] md:h-screen w-full bg-green flex justify-center items-center p-6">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] auto-rows-[120px] gap-y gap-x-4 gap-y-12 md:grid-cols-6 md:grid-rows-3 md:gap-y-8 md:gap-x-8 absolute top-0 left-0">
+            <div class="md:col-start-1 md:row-start-1  min-w-full min-h-full"><img src="{% static 'images/hh1.svg' %}" class="min-w-full min-h-full "></div>
+            <div class="col-start-1 row-start-4 md:col-start-1 md:row-start-3 min-w-full min-h-full"><img src="{% static 'images/hh2.svg' %}" class="min-w-full min-h-full"></div>
+            <div class="col-start-3 row-start-4 md:col-start-6 md:row-start-1"><img src="{% static 'images/hh3.svg' %}" class="min-w-full min-h-full"></div>
+            <div class="col-start-3 row-start-1 md:col-start-6 md:row-start-3 rounded-lg"><img src="{% static 'images/hh4.svg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-2 md:col-start-1"><img src="{% static 'images/hh6.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-1 md:col-start-2 rounded-lg"><img src="{% static 'images/hh13.jpg' %}" class="w-full min-h-full rounded-lg"></div>
+            <div class="md:md:col-start-5 md:row-start-1 rounded-lg"><img src="{% static 'images/hh8.jpg' %}" class="w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-3"><img src="{% static 'images/hh9.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-3"><img src="{% static 'images/hh10.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-3"><img src="{% static 'images/hh7.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-2 md:col-start-6"><img src="{% static 'images/hh11.jpg' %}" class="min-w-full min-h-full rounded-lg"></div>
+            <div class="md:row-start-1 md:col-start-3 rounded-lg"><img src="{% static 'images/hh12.jpg' %}" class="min-w-full min-h-full"></div>
+        </div>
+        <div class="flex w-[800px] h-[400px] drop-shadow-white shadow-[25px_25px_50px_20px_rgba(255,255,255,0.55)] bg-white bg-opacity-75 backdrop-blur-md rounded-2xl border-2 border-gray-200 p-12  items-center flex-col ">
+            <p class="text-2xl">SRC in Collaboration with Department Associations</p>
+            <p class="text-xl font-light mt-4">Present's</p> 
+            <img src="{% static 'images/tflogo.svg' %}" alt="">
+            <p class="text-xl md:max-w-[75%] mt-4 font-light text-gray-500">An intra-college technical symposium to enhance and equip young minds with technical knowledge through carefully curated events.</p>
+            <p class="mt-3 text-xl">13th & 14th of March, 2025</p>
+            <a href="#about"  class="w-full flex gap-2 items-center justify-center text-black bg-[#F2B229] hover:bg-[#cf9d2f] font-normal rounded-md text-2xl transition px-12 py-2.5 me-2 mb-2 mt-6">
+                Explore
+            </a>
+        </div>
+    </div>
+
+    <div class="p-6 lg:px-12 mt-6" id="about">
+        <p class="font-bold text-5xl text-left">About</p>
+        <div class="flex justify-between items-center flex-wrap gap-y-12">
+            <div class="md:max-w-[50%] mt-6">
+                <p class="text-xl text-gray-700">An intra college technical symposium organized by SRC in collaboration with department associations. In this cherished annual event more than 40 events are planned to be held with a overall prize pool of more than 1,00,000 Lakh Rupees. In a aim to motivate young engineering mind in the field of technical pursuit and challenging them in order to equip them better with up-to-date trends.</p>
+                <br>
+                <p class="text-xl text-gray-700">In this spectacular two-day event, the Student Research Council will host three dynamic inter-disciplinary events, while senior associations collectively organize an impressive 33 events with each association curating three exciting events. To inspire and engage first-year students, Ignite Association will spearhead five exclusive events.</p>
+                <div class="flex flex-wrap gap-y-4 mt-4">
+                    <a href="/events/technofete'25/explore" class="w-full flex gap-2 items-center justify-center text-black bg-[#F2B229] hover:bg-[#cf9d2f] rounded-md text-xl font-medium transition px-12 py-2.5">
+                        EXPLORE SRC EVENTS
+                        <img src="{% static 'images/arrow2.svg' %}" class="w-6">
+                    </a>
+                    <a href="/events/technofete'25/explore" class="w-full flex gap-2 items-center justify-center text-black bg-[#F2B229] hover:bg-[#cf9d2f] rounded-md text-xl font-medium transition px-12 py-2.5">
+                        EXPLORE ASSOCIATION EVENTS
+                        <img src="{% static 'images/group.svg' %}" class="w-6">
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center items-center md:max-w-[50%]">
+                <img src="{% static 'images/tflogo.svg' %}" class="w-[450px]">
+            </div>
+        </div>
+    </div>
+<div class="mt-6 p-6 md:px-12">
+    <div>
+        <p class="text-5xl font-bold">Agenda</p>
+    </div>
+</div>
+
+<!-- Branding -->
+ <div class="p-6 lg:px-12 font-montserrat relative ">
+    <div class="lg:max-w-[50%]">
+        <div class="mt-24 z-20 relative">
+            <img src="{% static 'images/tflogo.svg' %}" class="lg:w-[300px]">
+        </div>
+        <div class="">
+            <p class="font-bold text-5xl mt-4">Participate to Win Exciting Prizes</p>
+            <p class="text-gray-600 mt-4">
+                Explore the depths of technology with NXTech’24! This premier event offers you the chance to collaborate with like-minded peers, upskill your talent through hands-on workshops and sessions, and compete in exciting challenges. With opportunities to win exciting prizes and gain invaluable knowledge, NXTech’24 is more than just a symposium—it's a platform for innovation, networking, and growth. Join us and be a part of the future of technology!
+            </p>   
+            <a href="#events">
+                <button type="button" class="w-full flex gap-2 items-center justify-center text-white bg-[#F2B229] hover:bg-[#ad8734] focus:ring-4 focus:ring-blue-300 font-normal rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                    Explore Events
+                </button>
+            </a>
+        </div>
+    </div>
+    <div class="">
+        <img src="{% static 'images/globe.svg' %}" class="absolute top-[100px] right-[0px] w-[100px] lg:w-auto opacity-75">
+    </div>
+
+ </div>
+
+<!-- Footer -->
+<div class="bg-white p-6 lg:p-12 flex flex-col justify-center items-center">
+    <div class="flex items-center justify-center flex-col">
+        <p class="font-light">Organizing commitee</p>
+        <img src="{% static 'images/srclogo.png' %}" class="w-[200px] h-[200px] mt-6">
+        <p class="font-semibold text-xl">Student Research Council</p>
+        <p class="font-light tracking-widest">To Research, To Innovate</p>
+    </div>
+    <div class="flex gap-4 mt-6 flex-wrap lg:flex-nowrap justify-center">
+        <a href="mail:srcofficials@drmcet.ac.in" class="flex">
+            <img src="{% static 'images/mail.svg' %}" class="w-[20px]">
+            srcofficials@drmcet.ac.in
+        </a>
+        <a href="https://www.instagram.com/src.offl?igsh=ZThwa3VrbHlxbWFl" class="flex" target="_blank">
+            <img src="{% static 'images/instagram.svg' %}" class="w-[20px]">
+            src.offl
+        </a>
+        <a href="" class="flex">
+            <img src="{% static 'images/office.svg' %}" class="w-[20px]">
+            116 A-Block, MCET
+        </a>
+    </div>
+</div>
+
+<!-- Rights -->
+<div class="absolute bottom-0 min-w-full bg-[#f4f4f4] flex justify-center items-center">
+    <p class="font-light text-sm text-gray-800">© Copyrights all rights reserved</p>
+</div>
+<!-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> -->
+{% include 'core/generalscripts.html' %}
+</body>
+</html>

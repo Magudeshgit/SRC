@@ -34,7 +34,11 @@ def signin(request):
         auth = authenticate(request, username = request.POST['username'].lower(), password = request.POST['password'])
         if auth is not None:
             login(request, auth)
-            return redirect('/')
+            try:
+                red = request.GET['next']
+                return redirect(red)
+            except:
+                return redirect('/')
         else:
             error = "Incorrect Username or Password"
     return render(request, "authentication/signin.html", {"error": error})

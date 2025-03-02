@@ -15,18 +15,18 @@
     <div class="p-6 font-poppins">
         <div class="w-full bg-gradient-to-r from-[#F2B229] to-[#FFD87C] p-12 rounded-md relative overflow-hidden">
 
-            <img src="{% static 'images/bannerevent.svg' %}" alt="bannerevent" class="absolute top-0 right-0">
+            <img src="{% static 'images/bannerevent.svg' %}" alt="bannerevent" class="absolute bottom-0 right-0">
 
             <div>
-                <p class="text-4xl font-semibold">TechnoFete'25</p>
+                <p class="text-4xl font-semibold">{{banner.eventname}}</p>
                 <p class="text-xl tracking-[7px]">An Intra College Technical Symposium</p>
             </div>
-            <p class="text-2xl font-light opacity-65 mt-6 md:w-[75%]">An intra-college technical symposium to enhance and equip young minds with technical knowledge through carefully curated events. Joining hands with department association to conduct over <b>40+ Events</b> across all engineering domains. Register for our 2-day long Tech-Festival and celebrate technology togther.</p>
-            <p class="flex gap-2 items-center text-xl font-medium mt-6">
+            <p class="text-2xl font-light opacity-65 mt-6 md:w-[75%]">{{banner.short_description}}</p>
+            <p class="flex gap-2 items-center text-xl font-medium mt-6 relative">
                 <img src="{% static 'images/time-outline.svg' %}" class="w-6 h-6">
-                13th, 14th of February 2025
+                {{banner.startdate|date:"M"}} {{banner.startdate|date:"jS"}}, {{banner.enddate|date:"jS"}}, {{banner.startdate|date:"Y"}}
             </p>
-            <a href="#facilities" class="group pl- pr-2 py-2 mt-6 rounded-full bg-white hover:bg-gray-100 transition text-black text-2xl font-medium uppercase flex justify-between items-center gap-12 z-40 md:max-w-[250px]">
+            <a href="{% url 'macroevent' banner.eventname|lower %}" class="group pr-2 py-2 mt-6 rounded-full bg-white hover:bg-gray-100 transition text-black text-2xl font-medium uppercase flex justify-between items-center gap-12 relative z-40 md:max-w-[250px]">
                 <p class="w-3/4 text-center">
                 Register NOW
                 </p>
@@ -38,20 +38,27 @@
         <div class="mt-12">
             <p class="text-3xl underline font-poppins font-semibold text-center">Event Archives</p>
         </div>
+        <div class="flex gap-4 flex-wrap w-full justify-center">
+        {% for event in events %}
+        {% if not event.is_banner %}
         <div class="mt-6">
             <div class="p-6 max-w-[400px] max-h-[500px] border border-black rounded-xl">
                 <div class="flex justify-between items-center">
                     <p class="uppercase text-gray-400 tracking-[8px]">Technical Event</p>
                     <div class="border border-gray-400 rounded-full px-4 py-1 flex justify-center items-center">
-                        AY2023
+                        {{event.startdate|date:"Y"}}
                     </div>
                 </div>
-                <p class="font-bold text-4xl mt-6">NXTech'24</p>
-                <p class="font-light text-gray-500 text-xl mt-4">An intra-college technical symposium to enhance and equip young minds with technical knowledge through carefully curated events. Joining hands with department association to conduct over 40+ Events across all engineering domains. Register for our 2-day long Tech-Festival and celebrate technology togther.</p>
+                <p class="font-bold text-4xl mt-6">{{event.eventname}}</p>
+                <p class="font-light text-gray-500 text-xl mt-4">{{event.short_description}}</p>
                 <p class="mt-4 font-medium text-xl underline">Details Coming Soon</p>
             </div>
         </div>
+        {% endif %}
+        {% endfor %}
+        </div>
 
     </div>
+    {% include 'core/generalscripts.html' %}
 </body>
 </html>

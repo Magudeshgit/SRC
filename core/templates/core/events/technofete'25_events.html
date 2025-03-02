@@ -1,0 +1,213 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoFete'25 | Events</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    {% include 'core/generalheads.html' %}
+    {% tailwind_css %}
+</head>
+<body>
+    {% include 'core/nav.html' %}
+    {% if messages %}
+        <div class="w-full p-6 text-center bg-green-200">
+            {% for message in messages %}
+            {% autoescape off %}
+            {{message}}
+            {% endautoescape %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <div class="p-6 lg:px-12 font-poppins" id="events">
+        <div class="relative flex justify-center flex-col">
+          <div class="font-montserrat mt-12 w-full flex flex-col items-center justify-center relative"> 
+                  <div class="text-left min-w-full z-20">
+                      <p class="font-bold text-5xl text-center ">SRC EVENTS</p>
+                  </div>
+                  
+                  <!-- Cards -->
+                  <div class="flex lg:p-12 mt-4 rounded-2xl gap-6 flex-wrap md:flex-nowrap relative overflow-hidden max-w-[100vw]">
+                      <img src="{% static 'images/redblob.svg' %}" class="absolute right-[-100px] block top-[-100px]">
+                      <img src="{% static 'images/blueblob.svg' %}" class="absolute left-[-150px] bottom-[-150px]">
+                  
+                  {% for event in events %}
+                  {% if event.department.dept_name == "Student Research Council" %}
+                  <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 mt-12 flex flex-col justify-between">
+                      <div class="flex justify-between flex-wrap gap-y-4">
+                          <p class="text-3xl font-semibold">{{event.eventname}}</p>
+                          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full flex items-center">
+                              Registration Closes Soon
+                          </span>
+                          <p class=" text-gray-900 mt-4">Founder’s Fest is a one-day long entrepreneurial event focusing on young entrepreneurs to present their next business idea to a panel of judges who can then provide you with valuable insights in refining them to better comprehend with real-world competencies establishing a market viable business</p>
+                      </div>
+                      <div>
+                          <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
+                          <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
+                            {% if event.registration_closed %}
+                                <a class="w-full">
+                                    <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                        Registration Closed
+                                    </button>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
+                                    <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                        Register
+                                    </button>
+                                </a>
+                            {% endif %}
+                      </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+              </div>
+          </div>
+      </div>
+  
+  
+  <!-- Events -->
+  
+      <div class="mt-12 association-section">
+          <p class="font-montserrat font-bold text-4xl text-center">ASSOCIATION EVENTS</p>
+          <p class="font-montserrat font-medium text-xl text-center mt-2">Explore diverse fields and compete in inter-disciplinary events.</p>
+      </div>
+      {% if request.user.yos != "FIRST" %}
+      <form class="flex justify-center items-center gap-6 mt-4 flex-wrap" method="POST">
+    {% csrf_token %}
+          <button type="submit" value="IT" name="category" class="itbt flex justify-center items-center gap-2 ring-2 ring-gray-500/10 hover:bg-gray-200 transition ring-inset rounded-full py-2 px-12">
+              <img src="{% static 'images/itstream.svg' %}" class="w-10 invert">
+              <div>
+                  <p class="text-lg font-semibold leading-none">IT Stream</p>
+                  <p class="font-light text-gray-500">View 12 Events</p>    
+              </div>
+          </button>
+  
+          <button type="submit" value="Core" name="category" class="cobt flex justify-center items-center gap-2 ring-2 ring-gray-500/10 hover:bg-gray-200 transition ring-inset rounded-full py-2 px-12">
+              <img src="{% static 'images/core.svg' %}" class="w-10 invert">
+              <div>
+                  <p class="text-lg font-semibold leading-none">Core Stream</p>
+                  <p class="font-light text-gray-500">View 9 Events</p>    
+              </div>
+          </button>
+  
+          <button type="submit" name="category" value="Circuit" class="cibt flex justify-center items-center gap-2 ring-2 ring-gray-500/10 hover:bg-gray-200 transition ring-inset rounded-full py-2 px-12">
+              <img src="{% static 'images/circuit.svg' %}" class="w-10 invert">
+              <div>
+                  <p class="text-lg font-semibold leading-none">Circuit Stream</p>
+                  <p class="font-light text-gray-500">View 9 Events</p>    
+              </div>
+          </button>
+        </form>
+        {% endif %}
+      <div class="flex gap-4 w-full flex-wrap justify-center" id="/">
+        {% for event in events %}
+            {% if request.user.yos == "FIRST" %}
+                {% if event.department.dept_name == "Science & Humanities" and event.department.dept_name != "Student Research Council" %}
+                    <div class="backdrop-blur-md bg-white bg-opacity-25  rounded-2xl p-6 lg:p-12 w-[350px] mt-12 ring-2 ring-gray-500/10 ring-inset flex flex-col justify-between">
+                        <div>
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-3xl font-semibold">{{event.eventname}}</p>
+                                <p>Organized by {{event.department.association_name}}</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full inline-flex items-center">
+                                Registration Closes Soon
+                            </span>
+                        </div>
+                        <p class=" text-gray-900 mt-4">{{event.short_description}}</p>
+                        </div>
+                        <div>
+                        <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
+                        <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
+                        {% if event.registration_closed %}
+                            <a class="w-full">
+                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    Registration Closed
+                                </button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
+                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    Register
+                                </button>
+                            </a>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if event.department.dept_name != "Student Research Council" and event.department.dept_name != "Science & Humanities" %}
+                    <div class="backdrop-blur-md bg-white bg-opacity-25  rounded-2xl p-6 lg:p-12 w-[350px] mt-12 ring-2 ring-gray-500/10 ring-inset flex flex-col justify-between">
+                        <div>
+                        <div class="flex justify-between">
+                            <div>
+                                <p class="text-3xl font-semibold">{{event.eventname}}</p>
+                                <p>Organized by {{event.department.association_name}}</p>
+                            </div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full inline-flex items-center">
+                                Registration Closes Soon
+                            </span>
+                        </div>
+                        <p class=" text-gray-900 mt-4">{{event.short_description}}</p>
+                        </div>
+                        <div>
+                        <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
+                        <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
+                        {% if event.registration_closed %}
+                            <a class="w-full">
+                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    Registration Closed
+                                </button>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
+                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    Register
+                                </button>
+                            </a>
+                        {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <p class="hidden whichstream">{{stream}}</p>
+        <p class="hidden scrollst">{{scroll}}</p>
+  </div>
+  </div>
+  {% include 'core/generalscripts.html' %}
+  <script>
+    const st = document.querySelector('.whichstream').innerText
+    const it = document.querySelector('.itbt')
+    const co = document.querySelector('.cobt')
+    const ci = document.querySelector('.cibt')
+    const sst = document.querySelector('.scrollst').innerText
+    const ase = document.querySelector('.association-section')
+    
+    if (st == "IT")
+    {
+        addbg(it)   
+    }
+    else if (st == "Core")
+    {
+        addbg(co)   
+    }
+    else
+    {
+        addbg(ci)   
+    }
+
+    function addbg(el) {
+        el.classList.add('bg-gray-200')
+    }
+    console.log(sst)
+    if (sst != '')
+    {
+        ase.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+    }
+  </script>
+</body>
+</html>

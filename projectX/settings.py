@@ -142,3 +142,9 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'srcofficialsmcet@gmail.com'
 EMAIL_HOST_PASSWORD = 'uein ukpm yjjw tupe'
 EMAIL_PORT = 587
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/signin/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
