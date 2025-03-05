@@ -13,31 +13,42 @@
 </head>
 <body>
     {% include 'core/nav.html' %}
-    {% if events %}
-    <div class="w-full p-6 text-center bg-gray-100 font-poppins flex items-center justify-center font-medium text-lg gap-2">
+    <div class="p-6 font-poppins w-full relative">
+    {% if "Event Coordinator" in request.user.groups.all %}
+    <div class="w-full p-6 text-center bg-gray-100 font-poppins flex items-center justify-center font-medium text-lg gap-2 fixed left-0 z-20">
         <img src="{% static 'images/information-circle-outline.svg' %}" class="w-6 h-6">
         Please ensure event coordinators scan the QR codes during the event.
     </div>
     {% endif %}
-    <div class="p-6 font-poppins w-full">
-    <p class="text-4xl font-bold text-center">Your Registered Events</p>
+
+    <p class="text-4xl font-bold text-center mt-24">Your Registered Events </p>
     <div class="flex gap-4 flex-wrap justify-center mt-12">
         {% for event in events %}
-        <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 max-w-[350px] flex flex-col justify-between">
+        <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 max-w-[350px] flex flex-col justify-center">
             <div class="flex justify-center flex-wrap gap-y-4">
-                <qr-code 
-                    style="width: 250px; height: 250px;"
-                    contents="{{ request.META.HTTP_HOST }}/attendancehandler/{{ event.submission.id }}">
-                    <img src="{% static 'images/srclogo.png' %}" alt="" slot="icon">
-                </qr-code>
+                {% if not event.attendance %}
+                    <qr-code 
+                        style="width: 250px; height: 250px;"
+                        contents="{{ request.META.HTTP_HOST }}/attendancehandler/{{ event.submission.id }}">
+                        <img src="{% static 'images/srclogo.png' %}" alt="" slot="icon">
+                    </qr-code>
+                {% else %}
+                <img src="{{event.event.poster.url}}" class="max-w-[350px] shadow-lg rounded-xl border-2 border-gray-300">
+                {% endif %}
                 <p class="text-3xl font-semibold">{{event.event.eventname}} - {{event.teamname}}</p>
                 <p class=" text-gray-900 mt-4">Founder’s Fest is a one-day long entrepreneurial event focusing on young entrepreneurs to present their next business idea to a panel of judges who can then provide you with valuable insights in refining them to better comprehend with real-world competencies establishing a market viable business</p>
             </div>
             <div>
                 <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.event.startdate|date:"F d, Y. g:iA"}} - {{event.event.enddate|date:"g:iA"}}</p>
                 <p class="text-gray-800 font-semibold text-xl mt-4">Venue: {{event.event.event_venue}}</p>
-
             </div>
+            {% if event.attendance %}
+            <a href="" class="w-full">
+                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                    Feedback
+                </button>
+            </a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>

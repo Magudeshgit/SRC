@@ -22,9 +22,7 @@
       <a href="/#facilities" class="text-xl hover:underline transition-all">Facilities</a>
       <a href="/events" class="text-xl hover:underline transition-all">Events</a>
       <!-- <a href="/halloffame" class="text-xl hover:underline transition-all">Hall Of Fame</a> -->
-      {% if user.is_authenticated %}
-        <a href="#" class="text-xl hover:underline transition-all">Profile</a>
-        {% endif %}
+
   </div>
     <div class="flex gap-6 items-center">
       {% if user.is_authenticated %}
@@ -33,15 +31,24 @@
           <img src="{% static 'images/profile.svg' %}" alt="profile" class="w-12 h-12 opacity-75">
         </button>
         <div class="profilepopup hidden flex-col py-6 absolute top-[100%] right-0 rounded-lg bg-white text-xl shadow-xl w-[180px] opacity-0 transition-all scale-95">
-          <a href="/" class="border-b border-gray-200 py-4 hover:bg-gray-100 rounded-md px-4 flex gap-2">
+          <div class="border-b border-gray-200 py-4 rounded-md px-4 w-full flex gap-2">
             <img src="{% static  'images/profile2.svg' %}" alt="" class="w-6">
-            {{request.user.full_name}}'s Profile</a>
-          <a href="/" class="border-b border-gray-200 py-4 hover:bg-gray-100 rounded-md px-4 flex gap-2">
+            <p class="flex items-center gap-2">{{request.user.full_name}}<span class="w-[3px] h-[3px] z-20 relative bg-gray-700 rounded-full flex"></span> You</p>
+          </div>
+          <a href="/registeredevents" class="border-b border-gray-200 py-4 hover:bg-gray-100 rounded-md px-4 flex gap-2">
             <img src="{% static  'images/calendar.svg' %}" alt="" class="w-6">
-            Registered Events</a>
+            Registered Events
+          </a>
+          {% if "Moderator" in user.groups.all.0.name or user.is_superuser %}
+          <a href="/attendancescanner" class="border-b border-gray-200 py-4 hover:bg-gray-100 rounded-md px-4 flex gap-2">
+            <img src="{% static  'images/scanqr.svg' %}" alt="" class="w-6 invert">
+            Attendance Scanner
+          </a>
+          {% endif %}
           <a href="/logout" class="border-b border-gray-200 py-4 hover:bg-gray-100 rounded-md px-4 flex gap-2">
             <img src="{% static  'images/logout.svg' %}" alt="" class="w-6">
-            Logout</a>
+            Logout
+          </a>
         </div>
       </div>
       
@@ -66,9 +73,6 @@
         <a href="/events" class="text-xl hover:underline transition-all">Events</a>
         <a href="/#facilities" class="text-xl hover:underline transition-all">Facilities</a>
         <!-- <a href="/halloffame" class="text-xl hover:underline transition-all">Hall Of Fame -->
-        {% if user.is_authenticated %}
-        <a href="#" class="text-xl hover:underline transition-all">Profile</a>
-        {% endif %}
         <div>
           <a href="/signup" class="py-3 px-7 text-lg font-medium bg-[#1E88E5] hover:bg-[#28679f] transition-all rounded-full text-white">
             Signup/Signin

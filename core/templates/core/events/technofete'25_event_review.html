@@ -1,0 +1,128 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoFete'25 | {{ event.eventname }}</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    {% include 'core/generalheads.html' %}
+    {% tailwind_css %}
+</head>
+<body class="relative py-6">
+    {% include 'core/nav.html' %}
+    {% if messages %}
+        <div class="w-full p-6 text-center bg-red-200 font-poppins">
+            {% for message in messages %}
+            {% autoescape off %}
+            {{message}}
+            {% endautoescape %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="p-12 font-poppins max-w-[500px] mx-auto" id="register">
+        <p class="text-4xl font-bold">Event Feedback - </p>
+        <p class="text-red-400 font-semibold errortext text-xl">
+          {% autoescape off %}
+          {{error}}
+          {% endautoescape %}
+        </p>
+        <form class="bg-white form" method="POST">
+            {% csrf_token %}
+            <div class="space-y-12">
+              <div>
+                <div class="mt-4  gap-x-6 gap-y-8 sm:grid-cols-6">
+
+                        <div class="sm:col-span-3 mt-4">
+                          <label for="title" class="block text-lg font-medium leading-6 text-gray-900">Team Name</label>
+                          <div class="mt-2 min-w-full">
+                            <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                              <input required type="text" maxlength="100" name="teamname" id="title" class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="sm:col-span-3 mt-4">
+                            <label for="title" class="block text-lg font-medium leading-6 text-gray-900">Name of Participant {{ forloop.counter }} (You)</label>
+                            <div class="mt-2 min-w-full">
+                              <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input required type="text" value="{{request.user.full_name}}" disabled  maxlength="100" class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3 mt-4">
+                            <label for="title" class="block text-xl font-medium leading-6 text-gray-900">Full Roll Number (eg: 727623BAD***)</label>
+                            <div class="mt-2 min-w-full">
+                              <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input required type="text" value="{{request.user.username}}" disabled class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                              </div>
+                            </div>
+                        </div>
+
+                        <!-- POST-Ease Values -->
+                  <div class="hidden">
+                    <div class="sm:col-span-3 mt-4">
+                            <label for="title" class="block text-lg font-medium leading-6 text-gray-900">Name of Participant {{ forloop.counter }}</label>
+                            <div class="mt-2 min-w-full">
+                              <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input required type="text" value="{{request.user.full_name}}" name="participantname" maxlength="100" class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-3 mt-4">
+                            <label for="title" class="block text-xl font-medium leading-6 text-gray-900">Full Roll Number (eg: 727623BAD***)</label>
+                            <div class="mt-2 min-w-full">
+                              <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                                <input required type="text" value="{{request.user.username}}" name="rollno" class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                              </div>
+                            </div>
+                        </div>
+                  </div>
+
+
+                    <div class="sm:col-span-3 mt-4">
+                      <label for="title" class="block text-xl font-medium leading-6 text-gray-900">Name of Participant {{ forloop.counter }}</label>
+                      <div class="mt-2 min-w-full">
+                        <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                          <input type="text" maxlength="100" name="participantname" class="min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="sm:col-span-3 mt-4">
+                      <label for="title" class="block text-xl font-medium leading-6 text-gray-900">Full Roll Number (eg: 727623BAD***)</label>
+                      <div class="mt-2 min-w-full">
+                        <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                          <input type="text" name="rollno" oninput="this.value = this.value.toLowerCase()" class="rollno min-w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6" >
+                        </div>
+                      </div>
+                  </div>
+
+
+                        <div class="sm:col-span-3 mt-4 relative">
+                            <label for="title" class="block text-xl font-medium leading-6 text-gray-900">Mobile Number</label>
+                            <div class="mt-2 w-full">
+                              <div class="min-w-full flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600">
+                                <input required name="contact" value="{{request.user.contact}}" class="contact w-full block border-0 bg-transparent py-3 pl-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 text-xl sm:leading-6 relative" >
+                              </div>
+                            </div>
+                        </div>
+                </div>
+              </div>
+
+              </div>
+              <div class="mt-6 w-full">
+                <p class="text-red-400 font-semibold errortext text-xl text-center"></p>
+                <button type="submit" class="submitbtn w-full  rounded-md bg-[#F2B229] px-6 py-4 text-lg font-semibold text-black shadow-sm hover:bg-[#ad8632] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
+              </div>
+        </form>
+    </div>
+    <p class="min_team">    </p>
+    <div class="absolute bottom-0 w-full bg-gray-100 p-2 font-poppins text-center font-medium">
+        <p>Trouble Registering? Contact us: Ashwin (IIyr - IT): 9345857852, Magudeshwaran K (IIyr - A.D): 8838492241</p>
+    </div>
+    {% include 'core/generalscripts.html' %}
+</body>
+</html>

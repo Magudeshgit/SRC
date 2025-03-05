@@ -41,6 +41,7 @@ class microevent(models.Model):
 class submission(models.Model):
     macroevent = models.ForeignKey(macroevent, on_delete=models.CASCADE)
     microevent = models.ForeignKey(microevent, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now_add=True)
     
     teamname = models.CharField(max_length=50, null=True)
     registrar = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -55,13 +56,44 @@ class teammember(models.Model):
     roll = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
     contact = models.CharField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now=True)
     
     submission = models.ForeignKey(submission, on_delete=models.CASCADE)
     event = models.ForeignKey(microevent, on_delete=models.CASCADE)
     macroevent = models.ForeignKey(macroevent, on_delete=models.CASCADE)
     
-    attendance = models.BooleanField()
-    is_registrar = models.BooleanField()
+    attendance = models.BooleanField(default=False)
+    is_registrar = models.BooleanField(default=False)
+    reviewed = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name
+    
+class review(models.Model):
+    reviewer = models.CharField(max_length=20)
+    total_marks = models.IntegerField()
+    event = models.ForeignKey(microevent, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.event.eventname
+    
+class review_question(models.Model):
+    question = models.TextField(max_length=250)
+    max_marks = models.IntegerField()
+    event = models.ForeignKey(microevent, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.question
+
+class review_feeback(models.Model):
+    review = models.ForeignKey(review, on_delete=models.CASCADE)
+    review_question = models.ForeignKey(review_question, on_delete=models.CASCADE)
+    mark = models.IntegerField()
+    event = models.ForeignKey(microevent, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.review_question
+    
+    

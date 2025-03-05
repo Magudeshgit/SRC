@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http.response import JsonResponse
-from .models import macroevent as macroevents, microevent as microevents, teammember, submission
+from .models import macroevent as macroevents, microevent as microevents, teammember, submission, review_question
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.urls import reverse
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
+from .decorator import is_moderator
 
 def home(request):
     return render(request, "core/index.html")
@@ -16,7 +17,7 @@ def events(request):
 def macroeventhandler(request, macroevent):
     return render(request, f"core/events/{macroevent}.html")
 
-@login_required()
+@login_required
 def exploremicroeventhandler(request, macroevent):
     payload = ''
     if request.method == "POST":
@@ -29,7 +30,7 @@ def exploremicroeventhandler(request, macroevent):
         payload = microevents.objects.filter(Q(department__dept_name= "Science & Humanities") | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
     return render(request, f"core/events/{macroevent}_events.html", {"events":payload, "stream": request.user.department.stream_of})
 
-@login_required()
+@login_required
 def microeventhandler(request, macroevent, microevent):
     mi = microevents.objects.get(id=microevent)
     ma = macroevents.objects.get(eventname = macroevent)
@@ -88,12 +89,12 @@ def microeventhandler(request, macroevent, microevent):
     
     return render(request, f"core/events/{macroevent}_microevent.html", {"event": mi})
 
-@login_required()
+@login_required
 def registered_events(request):
     payload = teammember.objects.filter(roll=request.user.username, is_registrar = True)
     return render(request, 'core/registeredevents.html', {"events": payload})
 
-@login_required()
+@login_required
 def attendance_handler(request, submission_id):
     try:
         _submission = submission.objects.get(id=submission_id)
@@ -112,6 +113,20 @@ def attendance_handler(request, submission_id):
     except ObjectDoesNotExist:
         return JsonResponse({"status": False, "message": "Invalid, Registration not found"})
 
-@login_required()
+@login_required
+@is_moderator
 def attendance_scanner(request):
     return render(request, 'core/attendancescanner.html')
+
+@login_required
+def event_review(request, event_id):
+    try:
+        event = microevents.objects.get(id=event_id)
+        teammember.objects.filter(is_registrar = True, roll = request.user.username)
+        questions = review_question.objects.filter(event = event)
+        
+    except ObjectDoesNotExist:
+        return redirect('/')
+    
+    
+    return render(request, "core/events/technofete'25_event_review.html")

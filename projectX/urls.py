@@ -23,7 +23,7 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
+    # path("__reload__/", include("django_browser_reload.urls")),
     path('', home, name="home"),
     path('signup/', signup),
     path('signin/', signin),
@@ -40,6 +40,7 @@ urlpatterns = [
     path('events/<str:macroevent>/', macroeventhandler, name='macroevent'),
     path('events/<str:macroevent>/explore/', exploremicroeventhandler, name="macroeventexplorer"),
     path('events/<str:macroevent>/<str:microevent>/', microeventhandler, name="microeventdetails"),
+    path('event_review/<int:event_id>/', event_review),
     
     path('logout/', user_logout)
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

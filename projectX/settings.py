@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*ck6l#z@ic2u8db_ldg64vzl(xw0p7^v5p1$^#ni3rd^(76vy0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['src.drmcet.ac.in', '127.0.0.1']
 
 
 # Application definition
@@ -42,11 +42,14 @@ INSTALLED_APPS = [
     'core',
     'tailwind',
     'theme',
-    'django_browser_reload'
+    # 'django_browser_reload'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    
+     "whitenoise.middleware.WhiteNoiseMiddleware",
+     
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -54,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
+    # "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'projectX.urls'
@@ -128,6 +131,9 @@ STATICFILES_DIRS = [
     BASE_DIR/'static',
 ]
 
+# PROD
+STATIC_ROOT = Path.joinpath(BASE_DIR, 'staticfiles')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -148,3 +154,4 @@ LOGIN_URL = '/signin/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
+CSRF_TRUSTED_ORIGINS = ['https://src.drmcet.ac.in']
