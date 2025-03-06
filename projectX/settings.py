@@ -155,3 +155,8 @@ LOGIN_URL = '/signin/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
 CSRF_TRUSTED_ORIGINS = ['https://src.drmcet.ac.in']
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}

@@ -10,7 +10,7 @@ def signup(request):
     errortxt = ""
     if request.method == 'POST':    
         try:
-            User.objects.create_user(
+            user = User.objects.create_user(
                 username = request.POST['roll'].lower(),
                 email = request.POST['personalmail'],
                 collegemail = request.POST['roll'] + '@mcet.in',
@@ -21,7 +21,7 @@ def signup(request):
                 password = request.POST['password1']    
             )
             # Figure out YOS
-
+            login(request, user)
             return redirect('/')
         except IntegrityError:
             errortxt = "User Already Exists: The entered roll no already has an account try signing in"
