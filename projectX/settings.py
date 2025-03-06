@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*ck6l#z@ic2u8db_ldg64vzl(xw0p7^v5p1$^#ni3rd^(76vy0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['src.drmcet.ac.in', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -154,7 +154,7 @@ LOGIN_URL = '/signin/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media')
-CSRF_TRUSTED_ORIGINS = ['https://src.drmcet.ac.in']
+CSRF_TRUSTED_ORIGINS = ['https://src.drmcet.ac.in', 'http://13.201.230.221']
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
