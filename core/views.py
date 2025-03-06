@@ -15,7 +15,7 @@ def events(request):
     banner = payload.get(is_banner=True)
     return render(request, "core/events.html", {"events": payload, "banner": banner})
 def macroeventhandler(request, macroevent):
-    return render(request, f"core/events/{macroevent}.html")
+    return render(request, f"core/events/{macroevent.lower()}.html")
 
 @login_required
 def exploremicroeventhandler(request, macroevent):
@@ -28,7 +28,7 @@ def exploremicroeventhandler(request, macroevent):
         payload = microevents.objects.filter(Q(department__stream_of__name = request.user.department.stream_of.name) | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
     else:
         payload = microevents.objects.filter(Q(department__dept_name= "Science & Humanities") | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
-    return render(request, f"core/events/{macroevent}_events.html", {"events":payload, "stream": request.user.department.stream_of})
+    return render(request, f"core/events/{macroevent.lower()}_events.html", {"events":payload, "stream": request.user.department.stream_of})
 
 @login_required
 def microeventhandler(request, macroevent, microevent):
@@ -38,6 +38,7 @@ def microeventhandler(request, macroevent, microevent):
     
     if request.method == 'POST':
         print(request.POST)
+
         if subcount <= mi.maximum_participation:
             if not submission.objects.filter(macroevent=ma, microevent=mi, registrar = request.user):
                 partipant_names = request.POST.getlist('participantname')
@@ -77,7 +78,7 @@ def microeventhandler(request, macroevent, microevent):
                 return redirect(reverse('macroeventexplorer', kwargs={"macroevent": macroevent}))
             else:
                 messages.add_message(request, messages.INFO, f"<p class='font-medium text-lg'>Event Already Registered. Please Check your <a class='font-medium underline' href='/registeredevents'>Registered Events</a> Page</p>")
-                return render(request, f"core/events/{macroevent}_microevent.html", {"event": mi})
+                return render(request, f"core/events/{macroevent.lower()}_microevent.html", {"event": mi})
             "<p class='text-xl font-medium text-red-600'></p>"
         else:
             mi.registration_closed = True
@@ -87,7 +88,7 @@ def microeventhandler(request, macroevent, microevent):
     if mi.registration_closed:
         return redirect(reverse('macroeventexplorer', kwargs={"macroevent": macroevent}))
     
-    return render(request, f"core/events/{macroevent}_microevent.html", {"event": mi})
+    return render(request, f"core/events/{macroevent.lower()}_microevent.html", {"event": mi})
 
 @login_required
 def registered_events(request):
@@ -130,3 +131,4 @@ def event_review(request, event_id):
     
     
     return render(request, "core/events/technofete'25_event_review.html")
+
