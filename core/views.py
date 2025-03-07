@@ -23,7 +23,7 @@ def exploremicroeventhandler(request, macroevent):
     if request.method == "POST":
         category = request.POST['category']
         payload = microevents.objects.filter(Q(department__stream_of__name = category) | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
-        return render(request, f"core/events/{macroevent}_events.html", {"events": payload, "stream": category, "scroll": "bottom"})
+        return render(request, f"core/events/{macroevent}.lower()_events.html", {"events": payload, "stream": category, "scroll": "bottom"})
     if request.user.yos != 'FIRST':
         payload = microevents.objects.filter(Q(department__stream_of__name = request.user.department.stream_of.name) | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
     else:
