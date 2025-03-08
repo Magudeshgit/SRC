@@ -40,17 +40,28 @@
             </div>
             <p class="text-xl text-gray-600 mt-6">{{event.short_description}}</p>
 
-            <p class="text-2xl font-bold mt-6">Round Details:</p>
+            <p class="text-2xl font-bold mt-6">Details:</p>
             <p class="text-xl mt-2">
               {{event.round_details|linebreaksbr}}
             </p>
-            <p class="text-2xl mt-6"><span class="font-bold">Event Whereabouts: </span>
+            <p class="text-2xl mt-6"><span class="font-bold">Team Size: </span> {{event.min_team_size}} - {{event.max_team_size}}</p>
+            <p class="text-2xl mt-2"><span class="font-bold">Event Whereabouts: </span>
               {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}
             </p>
             <p class="text-2xl mt-2"><span class="font-bold">Jury Details: </span> {{event.jury_details}}</p>
-            <div class="mt-12 min-w-full flex">
-                <a href="#register" class=" mt-4 min-w-[100%]  rounded-md bg-[#F2B229] px-6 py-4 text-xl font-semibold text-black text-center shadow-sm hover:bg-[#d1a547] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</a>
-              </div>
+            <p class="text-2xl mt-2"><span class="font-bold">Student Coordinator: </span> {{event.student_coordinator}}</p>
+            <div class="mt-12 min-w-full flex gap-4">
+                <a href="#register" class=" mt-4 w-full rounded-md bg-[#F2B229] px-6 py-4 text-xl font-semibold text-black text-center shadow-sm hover:bg-[#d1a547] transition flex gap-2 justify-center items-center">
+                  Register
+                  <img src="{% static 'images/arrow2.svg' %}" class="w-6 rotate-90">
+                </a>
+                {% if event.additional_files %}
+                <a href="{% url 'downloadadditionalfile' event.micro_of event.id %}" class=" mt-4 w-full rounded-md border border-[#F2B229] px-6 py-4 text-xl font-semibold text-black text-center shadow-sm hover:bg-[#d1a547] transition flex gap-2 justify-center items-center">
+                  {{event.ad_btn_text}}
+                  <img src="{% static 'images/download.svg' %}" class="w-6 invert">
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="p-12 font-poppins max-w-[500px] mx-auto" id="register">

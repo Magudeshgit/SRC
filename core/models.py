@@ -30,10 +30,19 @@ class microevent(models.Model):
     is_team_event = models.BooleanField()
     min_team_size = models.IntegerField()
     max_team_size = models.IntegerField()
+    additional_files = models.FileField(upload_to='additional_files', null=True, blank=True)
+    ad_btn_text = models.CharField(max_length=30, verbose_name="Button Text", null=True, blank=True)
     
     registration_closed = models.BooleanField()
     department = models.ForeignKey(department, on_delete=models.SET_NULL, null=True)
     student_coordinator = models.TextField()
+    
+    def get_short(self):
+        sub = self.department.dept_name.split(" ")
+        short = ""
+        for i in sub:
+            short += i[0].upper()
+        return short
     
     def __str__(self):
         return self.eventname
@@ -51,7 +60,7 @@ class submission(models.Model):
         return self.microevent.eventname
 
 class teammember(models.Model):
-    teamname = models.CharField(max_length=50, null=True)
+    teamname = models.CharField(max_length=50, null=True, blank=True)
     
     roll = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
@@ -64,6 +73,8 @@ class teammember(models.Model):
     macroevent = models.ForeignKey(macroevent, on_delete=models.CASCADE)
     
     attendance = models.BooleanField(default=False)
+    attendancemoderator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    
     is_registrar = models.BooleanField(default=False)
     reviewed = models.BooleanField(default=False)
     

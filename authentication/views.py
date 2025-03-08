@@ -22,7 +22,11 @@ def signup(request):
             )
             # Figure out YOS
             login(request, user)
-            return redirect('/')
+            try:
+                red = request.GET['next']
+                return redirect(red)
+            except:
+                return redirect('/')
         except IntegrityError:
             errortxt = "User Already Exists: The entered roll no already has an account try signing in"
             

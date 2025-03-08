@@ -38,23 +38,25 @@
                   <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 mt-12 flex flex-col justify-between">
                       <div class="flex justify-between flex-wrap gap-y-4">
                           <p class="text-3xl font-semibold">{{event.eventname}}</p>
-                          <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full flex items-center">
-                              Registration Closes Soon
-                          </span>
-                          <p class=" text-gray-900 mt-4">Founder’s Fest is a one-day long entrepreneurial event focusing on young entrepreneurs to present their next business idea to a panel of judges who can then provide you with valuable insights in refining them to better comprehend with real-world competencies establishing a market viable business</p>
+                          <div class="border border-black text-gray-800 font-medium py-3 px-6 rounded-full flex items-center text-lg leading-[0]">
+                              <p>{{event.department.dept_pseudo}}</p>
+                          </div>
+                          <p class="text-gray-900 mt-4 text-xl">
+                            {{event.short_description}}
+                          </p>
                       </div>
                       <div>
                           <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
                           <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
                             {% if event.registration_closed %}
                                 <a class="w-full">
-                                    <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 mt-6">
                                         Registration Closed
                                     </button>
                                 </a>
                             {% else %}
                                 <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
-                                    <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                    <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 mt-6">
                                         Register
                                     </button>
                                 </a>
@@ -105,7 +107,7 @@
       <div class="flex gap-4 w-full flex-wrap justify-center" id="/">
         {% for event in events %}
             {% if request.user.yos == "FIRST" %}
-                {% if event.department.dept_name == "Science & Humanities" and event.department.dept_name != "Student Research Council" %}
+                {% if event.department.dept_name == "Science & Humanities" and event.department.dept_name != "Student Research Council" and event.eventname != "Workshop on Progressive Technology" %}
                     <div class="backdrop-blur-md bg-white bg-opacity-25  rounded-2xl p-6 lg:p-12 w-[350px] mt-12 ring-2 ring-gray-500/10 ring-inset flex flex-col justify-between">
                         <div>
                         <div class="flex justify-between">
@@ -113,24 +115,24 @@
                                 <p class="text-3xl font-semibold">{{event.eventname}}</p>
                                 <p>Organized by {{event.department.association_name}}</p>
                             </div>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full inline-flex items-center">
-                                Registration Closes Soon
-                            </span>
+                            <div class="border border-black text-gray-800 font-medium px-6 rounded-full flex items-center text-lg leading-[0]">
+                                {{event.department.dept_pseudo}}
+                            </div>
                         </div>
-                        <p class=" text-gray-900 mt-4">{{event.short_description}}</p>
+                        <p class=" text-gray-900 mt-4 text-xl">{{event.short_description}}</p>
                         </div>
                         <div>
                         <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
                         <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
                         {% if event.registration_closed %}
                             <a class="w-full">
-                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 mt-6">
                                     Registration Closed
                                 </button>
                             </a>
                         {% else %}
                             <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
-                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-3 me-2 mb-2 mt-6">
                                     Register
                                 </button>
                             </a>
@@ -147,24 +149,26 @@
                                 <p class="text-3xl font-semibold">{{event.eventname}}</p>
                                 <p>Organized by {{event.department.association_name}}</p>
                             </div>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-5 py-1.5 rounded-full inline-flex items-center">
-                                Registration Closes Soon
-                            </span>
+                            <div class="border border-black text-gray-800 font-medium py-0 px-6 rounded-full flex items-center">
+                                <p>
+                                {{event.department.dept_pseudo}}
+                                </p>
+                            </div>
                         </div>
-                        <p class=" text-gray-900 mt-4">{{event.short_description}}</p>
+                        <p class=" text-gray-900 mt-4 text-xl">{{event.short_description}}</p>
                         </div>
                         <div>
                         <p class="mt-6 text-gray-800 font-semibold text-xl">Date and Time: {{event.startdate|date:"F d, Y. g:iA"}} - {{event.enddate|date:"g:iA"}}</p>
                         <p class="text-gray-800 font-semibold text-xl">Venue: {{event.event_venue}}</p>
                         {% if event.registration_closed %}
                             <a class="w-full">
-                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                <button disabled class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2  mt-6">
                                     Registration Closed
                                 </button>
                             </a>
                         {% else %}
                             <a href="{% url 'microeventdetails' event.micro_of event.id %}" class="w-full">
-                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 mt-6">
+                                <button type="button" class="w-full flex gap-2 text-center items-center justify-center text-black bg-[#F2B229] hover:bg-[#98772d] focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-lg px-12 py-2.5 me-2 mb-2  mt-6">
                                     Register
                                 </button>
                             </a>

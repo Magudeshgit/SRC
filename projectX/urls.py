@@ -40,6 +40,7 @@ urlpatterns = [
     path('events/<str:macroevent>/', macroeventhandler, name='macroevent'),
     path('events/<str:macroevent>/explore/', exploremicroeventhandler, name="macroeventexplorer"),
     path('events/<str:macroevent>/<str:microevent>/', microeventhandler, name="microeventdetails"),
+    path('events/<str:macroevent>/download/<int:eventid>', additional_file_download, name="downloadadditionalfile"),
     path('event_review/<int:event_id>/', event_review),
     
     path('logout/', user_logout)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from .models import macroevent as macroevents, microevent as microevents, teammember, submission, review_question
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from .decorator import is_moderator
+import mimetypes as mmt
 
 def home(request):
     return render(request, "core/index.html")
@@ -17,13 +18,13 @@ def events(request):
 def macroeventhandler(request, macroevent):
     return render(request, f"core/events/{macroevent.lower()}.html")
 
-@login_required
+@login_required(login_url='/signup')
 def exploremicroeventhandler(request, macroevent):
     payload = ''
     if request.method == "POST":
         category = request.POST['category']
         payload = microevents.objects.filter(Q(department__stream_of__name = category) | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
-        return render(request, f"core/events/{macroevent}.lower()_events.html", {"events": payload, "stream": category, "scroll": "bottom"})
+        return render(request, f"core/events/{macroevent.lower()}_events.html", {"events": payload, "stream": category, "scroll": "bottom"})
     if request.user.yos != 'FIRST':
         payload = microevents.objects.filter(Q(department__stream_of__name = request.user.department.stream_of.name) | Q(department__dept_name="Student Research Council"), micro_of = macroevents.objects.get(eventname__icontains=macroevent))
     else:
@@ -90,12 +91,24 @@ def microeventhandler(request, macroevent, microevent):
     
     return render(request, f"core/events/{macroevent.lower()}_microevent.html", {"event": mi})
 
+def additional_file_download(request, macroevent, eventid):
+    file = microevents.objects.get(id=eventid)
+    filedata = open(file.additional_files.path, 'rb')
+    response = HttpResponse(filedata, 
+                            headers={
+                                "Content-Disposition": f'attachment; filename="{file.eventname+ "." + file.additional_files.path.split(".")[-1]}"',
+                                "Content-Type": mmt.guess_type(file.additional_files.path)[0]
+                                })
+    return response
+    
+
 @login_required
 def registered_events(request):
     payload = teammember.objects.filter(roll=request.user.username, is_registrar = True)
     return render(request, 'core/registeredevents.html', {"events": payload})
 
 @login_required
+@is_moderator
 def attendance_handler(request, submission_id):
     try:
         _submission = submission.objects.get(id=submission_id)

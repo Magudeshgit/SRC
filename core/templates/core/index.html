@@ -11,11 +11,22 @@
     {% tailwind_css %}
 </head>
 <body>
-     <section class="w-full px-12 flex flex-col max-w-[1440px] ml-auto mr-auto font-poppins">
+     <section class="w-full px-12 flex flex-col max-w-[1440px] ml-auto mr-auto font-poppins relative">
+
         {% include 'core/nav.html' %}
+        <div class="w-full p-6 bg-[#f0b93b] rounded-t-3xl rounded-tr-3xl flex justify-center items-center flex-wrap">
+            <p class="font-semibold text-2xl ">TechnoFete'25 </p>
+            <p class="font-light text-xl"> - A Grand Intra College Technical Symposium</p>
+            <span class="w-[3px] h-[3px] z-20 relative bg-gray-900 rounded-full flex mx-4"></span>
+            <a class="font-medium text-xl underline flex items-center gap-2" href="/events/technofete'25">
+                Register now
+                <img src="{% static 'images/arrow2.svg' %}" class="w-4 h-4">
+            </a>
+
+        </div>
         <!-- Hero Section -->
-        <div class="w-full relative overlay overflow-hidden h-[70vh] rounded-3xl flex justify-center items-center p-6 font-poppins text-white">
-            <img src="{% static 'images/m1.png' %}" alt="img" class="min-w-full min-h-full absolute left-0 top-0">
+        <div class="w-full relative overlay overflow-hidden h-[70vh] rounded-b-3xl rounded-br-3xl flex justify-center items-center p-6 font-poppins text-white">
+            <img src="{% static 'images/m1.png' %}" alt="img" class="min-w-full min-h-full max-w-[unset] absolute top-0">
             <div class="z-20 relative w-full text-center">
                 <p class="font-light tracking-[10px] text-xl md:text-2xl uppercase text-gray-200">Student Research Council</p>
                 <p class="text-[32px]/snug md:text-6xl/normal font-semibold">
@@ -42,7 +53,7 @@
          </div>
          <div class="w-full mt-14 flex justify-between items-center gap-12 flex-wrap md:flex-nowrap">
             <div class="w-full  md:max-w-[50%]">
-                <img src="{% static 'images/sp1.png' %}" alt="">
+                <img src="{% static 'images/spotlight.png' %}" class="rounded-md shadow-2xl border-2 border-gray-300">
             </div>
             <div class="w-full md:max-w-[50%]">
                 <p class=" text-gray-600 text-xl tracking-[15px]">UPCOMING EVENT</p>
@@ -67,7 +78,7 @@
             </div>
             <div class="grid grid-cols-12 grid-rows-2 gap-6 mt-12">
                 <div class="col-span-12 md:col-span-8 h-[250px] overflow-hidden rounded-3xl">
-                    <img src="{% static 'images/sp1.png' %}" class="min-w-[100%] min-h-[100%]">
+                    <img src="{% static 'images/bentogrid.png' %}" class="min-w-full max-h-full">
                 </div>
                 <div class="bg-[#87FF93] p-12 rounded-3xl gap-12 flex flex-col justify-evenly col-span-12 md:col-span-4 row-span-2">
                     <div>
@@ -76,7 +87,7 @@
                     </div>
                     <div class="w-full h-[1px] rounded-full bg-gray-900 opacity-40"></div>
                     <div>
-                        <p class="text-7xl font-medium">500+</p>
+                        <p class="text-7xl font-medium">300+</p>
                         <p class="text-2xl">Students Awarded</p>
                     </div>
                 </div>
@@ -89,8 +100,8 @@
                     <p class="text-2xl">Success Rate</p>
                 </div>
                 <div class="bg-[#d8ff58] rounded-3xl h-full col-span-full md:col-span-2  flex justify-center p-12 md:p-20 text-left flex-col">
-                    <p class="text-7xl font-medium">100%</p>
-                    <p class="text-2xl">Success Rate</p>
+                    <p class="text-7xl font-medium">50+</p>
+                    <p class="text-2xl">Talents Identified</p>
                 </div>
             </div>
          </div>
@@ -129,7 +140,7 @@
                 <div class="w-full h-full relative z-20">
                 <p class="uppercase text-base font-medium text-gray-700">funding</p>
                 <p class="font-medium text-3xl mt-4">Seed Funding</p>
-                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <p>We provide financial assistance to students with groundbreaking ideas, ensuring that innovation is not hindered by a lack of resources. By supporting early-stage projects, we empower young researchers to develop transformative solutions, bridging the gap between ideation and execution to drive impactful advancements in technology and science.</p>
                 <!-- <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
                     Get in touch
                     <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
@@ -142,7 +153,7 @@
                 <div class="w-full h-full z-20 relative">
                 <p class="uppercase text-base font-medium text-gray-700">guidance</p>
                 <p class="font-medium text-3xl mt-4">Project Guidance</p>   
-                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <p>We identify and recognize outstanding student projects that demonstrate creativity, feasibility, and real-world impact. Through mentorship and exposure, we nurture talent and provide the right platforms for students to refine their ideas. </p>
                 <!-- <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
                     Get in touch
                     <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
@@ -153,9 +164,9 @@
 
             <div class="p-12 bg-[#E2EEDA] col-span-full  md:col-span-1 rounded-xl relative overflow-hidden">
                 <div class="w-full h-full z-20 relative">
-                <p class="uppercase text-base font-medium text-gray-700">funding</p>
-                <p class="font-medium text-3xl mt-4">Paper Publication</p>
-                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <p class="uppercase text-base font-medium text-gray-700">Upskill</p>
+                <p class="font-medium text-3xl mt-4">Elevating Technical Minds</p>
+                <p>Through technical symposiums, hackathons, and innovation challenges, we foster an environment for knowledge exchange, skill development, and industry collaboration. These events provide students with opportunities to present their research, network with experts, and gain valuable insights, inspiring them to excel in their respective technical and scientific domains.</p>
                 <!-- <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
                     Get in touch
                     <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">
@@ -166,9 +177,9 @@
 
             <div class="p-12 bg-[#E6E0EA] col-span-full  md:col-span-1  md:col- rounded-xl relative overflow-hidden">
                 <div class="w-full h-full z-20 relative">
-                <p class="uppercase text-base font-medium text-gray-700">funding</p>
+                <p class="uppercase text-base font-medium text-gray-700">Invention protection</p>
                 <p class="font-medium text-3xl mt-4">IPR Assistance</p>
-                <p>We support ambitious student researchers by providing seed funding to kickstart their innovative projects. Whether you need resources for experimentation, prototyping, or further development, our funding helps transform ideas into impactful research with real-world potential.</p>
+                <p>We educate students on Intellectual Property Rights (IPR), patents, and technology commercialization. By conducting workshops and knowledge-sharing sessions, we equip researchers with essential skills to protect their ideas, secure legal rights, and understand the commercialization landscape, ensuring that their innovations receive the recognition and protection they deserve.</p>
                 <!-- <a href="#" class="font-semibold text-xl underline mt-6 flex gap-2 group">
                     Get in touch
                     <img src="{% static 'images/arrow2.svg' %}" class="w-5 group-hover:translate-x-2 transition">

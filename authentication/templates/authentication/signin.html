@@ -10,7 +10,7 @@
     {% include 'core/generalheads.html' %}
     {% tailwind_css %}
 </head>
-<body>
+<body class="md:max-h-[100vh]">
     <nav class="p-6 flex justify-between items-center w-full font-poppins sticky top-0 z-30 bg-white">
         <div>
             <div class="flex items-center gap-2 md:gap-3 font-[Poppins] z-40">
@@ -48,6 +48,7 @@
                     <p class="text-4xl font-semibold">Student Research <br>Council</p>
                 </div> -->
                 <p class="text-3xl font-poppins font-semibold mt-12">Sign In to your Innovator Account!</p>
+                <p class="text-xl">Please Sign in to continue</p>
                 <p class="errortext text-red-600 text-xl">{{error}}</p>
             </div>
           <div class="sm:mx-auto w-full">
@@ -78,13 +79,13 @@
         
             <p class="mt-2 text-center text-xl text-gray-500">
               Don't have an account?
-              <a href="/signup" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Signin</a>
+              <a href="/signup" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Signup</a>
             </p>
           </div>
         </div>
         <!-- Side banner -->
-        <div class="side flex min-h-full w-[100%]">
-          <img src="{% static 'images/banner4.jpg' %}" class="min-w-[100%] min-h-[100%]" alt="banner">
+        <div class="max-h-full w-[100%] flex justify-center">
+          <img src="{% static 'images/signin.png' %}" class="max-h-[100vh]" alt="banner">
         </div>
       </div>
       <script>

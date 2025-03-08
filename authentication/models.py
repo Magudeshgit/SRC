@@ -7,8 +7,9 @@ class stream(models.Model):
         return self.name
 
 class department(models.Model):
-    stream_of = models.ForeignKey(stream, on_delete=models.SET_NULL, null=True)
+    stream_of = models.ForeignKey(stream, on_delete=models.SET_NULL, null=True, blank=True)
     dept_name = models.CharField(max_length=50)
+    dept_pseudo = models.CharField(max_length=10)
     association_name = models.CharField(max_length=100)
     coordinatorname = models.CharField(max_length=150)
     contact = models.CharField(max_length=22)
