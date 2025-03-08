@@ -50,7 +50,7 @@
             </p>
             <p class="text-2xl mt-2"><span class="font-bold">Jury Details: </span> {{event.jury_details}}</p>
             <p class="text-2xl mt-2"><span class="font-bold">Student Coordinator: </span> {{event.student_coordinator}}</p>
-            <div class="mt-12 min-w-full flex gap-4">
+            <div class="mt-12 min-w-full flex gap-4 flex-wrap md:flex-nowrap">
                 <a href="#register" class=" mt-4 w-full rounded-md bg-[#F2B229] px-6 py-4 text-xl font-semibold text-black text-center shadow-sm hover:bg-[#d1a547] transition flex gap-2 justify-center items-center">
                   Register
                   <img src="{% static 'images/arrow2.svg' %}" class="w-6 rotate-90">

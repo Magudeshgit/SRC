@@ -32,9 +32,9 @@
                   <div class="flex lg:p-12 mt-4 rounded-2xl gap-6 flex-wrap md:flex-nowrap relative overflow-hidden max-w-[100vw]">
                       <img src="{% static 'images/redblob.svg' %}" class="absolute right-[-100px] block top-[-100px]">
                       <img src="{% static 'images/blueblob.svg' %}" class="absolute left-[-150px] bottom-[-150px]">
-                  
                   {% for event in events %}
                   {% if event.department.dept_name == "Student Research Council" %}
+		  
                   <div class="backdrop-blur-md bg-white bg-opacity-25 border-2 border-gray-100 rounded-md p-6 lg:p-12 mt-12 flex flex-col justify-between">
                       <div class="flex justify-between flex-wrap gap-y-4">
                           <p class="text-3xl font-semibold">{{event.eventname}}</p>
@@ -63,6 +63,7 @@
                             {% endif %}
                       </div>
                   </div>
+         
                   {% endif %}
                   {% endfor %}
               </div>
